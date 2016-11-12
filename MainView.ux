@@ -26,7 +26,7 @@
                     ux:Global="Montserrat" 
                     File="Assets/Montserrat-Regular.ttf" />
 
-                <Panel 
+                <DockPanel 
                     ux:Name="Panel1" 
                     Background="#379bd2" 
                     Height="460" 
@@ -41,8 +41,20 @@
 
                     <StackPanel 
                         ux:Name="Input"
-                        Y="70%" 
-                        Padding="10">
+                        Alignment="Bottom" 
+                        Padding="6"
+                        Margin="20"
+                        Background="#379bd2">
+
+                        <Text 
+                            FontSize="18" 
+                            TextWrapping="Wrap" 
+                            Margin="20,0,20,10" 
+                            Color="#fff"
+                            TextAlignment="Center" 
+                            Font="Montserrat">
+                            ADD YOUR URL TO MONITOR YOUR WEBSITE
+                        </Text>
                 
                         <TextInput 
                             Value="{url}" 
@@ -50,6 +62,7 @@
                             PlaceholderColor="#ccc" 
                             TextColor="#888" 
                             FontSize="16" 
+                            Height="44"
                             TextWrapping="NoWrap" 
                             Alignment="Top" 
                             MinWidth="100" 
@@ -84,8 +97,8 @@
 
                     <Image ux:Name="Fish" Width="60" Height="40" X="110%" Y="60%">
                         <MultiDensityImageSource>
-                            <HttpImageSource Density="1" File="Assets/img/fish.png" />
-                            <HttpImageSource Density="2" File="Assets/img/fish@2x.png"  />
+                            <FileImageSource Density="1" File="Assets/img/fish.png" />
+                            <FileImageSource Density="2" File="Assets/img/fish@2x.png"  />
                         </MultiDensityImageSource>
                     </Image>
                     <Each 
@@ -127,8 +140,8 @@
 
                     <Image StretchMode="UniformToFill">
                         <MultiDensityImageSource>
-                            <HttpImageSource Density="1" File="Assets/img/flowers-bg.png" />
-                            <HttpImageSource Density="2" File="Assets/img/flowers-bg@2x.png" />
+                            <FileImageSource Density="1" File="Assets/img/flowers-bg.png" />
+                            <FileImageSource Density="2" File="Assets/img/flowers-bg@2x.png" />
                         </MultiDensityImageSource>
                     </Image>
 
@@ -139,8 +152,8 @@
                             Duration="1" />
                         <Image X="0" Y="-30px">
                             <MultiDensityImageSource>
-                                <HttpImageSource Density="1" File="Assets/img/water-orange.png" />
-                                <HttpImageSource Density="2" File="Assets/img/water-orange@2x.png" />
+                                <FileImageSource Density="1" File="Assets/img/water-orange.png" />
+                                <FileImageSource Density="2" File="Assets/img/water-orange@2x.png" />
                             </MultiDensityImageSource>                            
                         </Image>
                         <Rotate 
@@ -156,18 +169,19 @@
 
                     <Image X="0" Y="-30px">
                         <MultiDensityImageSource>
-                            <HttpImageSource Density="1" File="Assets/img/water-blue.png"  />
-                            <HttpImageSource Density="2" File="Assets/img/water-blue@2x.png"  />
+                            <FileImageSource Density="1" File="Assets/img/water-blue.png"  />
+                            <FileImageSource Density="2" File="Assets/img/water-blue@2x.png"  />
                         </MultiDensityImageSource>
                     </Image>
                     <Image ux:Name="Duck" Height="80" Width="120" X="0" Y="-84px">
                         <MultiDensityImageSource>
-                            <HttpImageSource Density="1" File="Assets/img/logo.png"  />
-                            <HttpImageSource Density="2" File="Assets/img/logo@2x.png"  />
+                            <FileImageSource Density="1" File="Assets/img/logo.png"  />
+                            <FileImageSource Density="2" File="Assets/img/logo@2x.png"  />
                         </MultiDensityImageSource>
                     </Image>
 
-                </Panel>
+                    <BottomFrameBackground Dock="Bottom" ux:Name="bottomframe" />
+                </DockPanel>
             </Page>
         </PageControl>
     </DockPanel>
