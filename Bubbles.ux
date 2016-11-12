@@ -1,0 +1,29 @@
+                    <Each 
+                        Items="{bubbles}"
+                        ux:Class="Bubbles">
+                        <Activated>
+                            <Circle 
+                                ux:Name="Bubble" 
+                                Width="{width}" 
+                                Height="{height}" 
+                                X="{x}" 
+                                Y="100%">
+                                <Stroke 
+                                    Width="1">
+                                    <SolidColor 
+                                        Color="#fff" />
+                                </Stroke>
+                            </Circle>
+                            <Change 
+                                Bubble.Y="0" 
+                                Delay="{delay}" 
+                                Duration="{duration}" 
+                                DurationBack="0" />
+                            <Change 
+                                Bubble.Opacity="0" 
+                                Duration="{duration}" 
+                                Delay="{delay}" 
+                                DurationBack="0" />
+
+                        </Activated>
+                    </Each>

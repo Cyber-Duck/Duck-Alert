@@ -1,0 +1,21 @@
+                <Panel ux:Class="Fish">
+                    <Image 
+                        ux:Name="Fish" 
+                        Width="60" 
+                        Height="40" 
+                        X="110%" 
+                        Y="40%">
+                        <MultiDensityImageSource>
+                            <FileImageSource Density="1" File="Assets/img/fish.png" />
+                            <FileImageSource Density="2" File="Assets/img/fish@2x.png"  />
+                        </MultiDensityImageSource>
+                    </Image>
+
+                    <Activated>
+                        <Change 
+                            Fish.X="-40%" 
+                            Duration="9"
+                            Delay="2" 
+                            DurationBack="0" />
+                    </Activated>
+                </Panel>

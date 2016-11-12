@@ -1,35 +1,18 @@
 <App>
     <DockPanel Background="#fff">
 
-            <JavaScript File= "./app.js" />
-
-            <JavaScript>
-
-                module.exports = {
-                    bubbles: [
-                        { width: 20, height: 20, x: "20%", duration: 10, delay: 6 },
-                        { width: 28, height: 28, x: "4%", duration: 8, delay: 8 },
-                        { width: 12, height: 12, x: "9%", duration: 9, delay: 4 },
-                        { width: 18, height: 18, x: "72%", duration: 7, delay: 0 },
-                        { width: 20, height: 20, x: "44%", duration: 10, delay: 12 },
-                        { width: 38, height: 38, x: "80%", duration: 12, delay: 14 },
-                        { width: 12, height: 12, x: "88%", duration: 16, delay: 2 },
-                        { width: 18, height: 18, x: "34%", duration: 18, delay: 3 }
-                    ]
-                };
-
-            </JavaScript>
+        <JavaScript File= "./app.js" />
+        <JavaScript File="./bubbles.js" />
+        <Font 
+            ux:Global="Montserrat" 
+            File="Assets/Montserrat-Regular.ttf" />
 
         <PageControl>
             <Page>
-                <Font 
-                    ux:Global="Montserrat" 
-                    File="Assets/Montserrat-Regular.ttf" />
-
                 <DockPanel 
                     ux:Name="Panel1" 
                     Background="#379bd2" 
-                    Height="460" 
+                    Height="80%" 
                     Alignment="Bottom">
 
                     <Activated>
@@ -39,104 +22,11 @@
                             DurationBack="0" />
                     </Activated>
 
-                    <StackPanel 
-                        ux:Name="Input"
-                        Alignment="Bottom" 
-                        Padding="6"
-                        Margin="20"
-                        Background="#379bd2">
+                    <InputForm />
 
-                        <Text 
-                            FontSize="18" 
-                            TextWrapping="Wrap" 
-                            Margin="20,0,20,10" 
-                            Color="#fff"
-                            TextAlignment="Center" 
-                            Font="Montserrat">
-                            ADD YOUR URL TO MONITOR YOUR WEBSITE
-                        </Text>
-                
-                        <TextInput 
-                            Value="{url}" 
-                            PlaceholderText="www.domain.com" 
-                            PlaceholderColor="#ccc" 
-                            TextColor="#888" 
-                            FontSize="16" 
-                            Height="44"
-                            TextWrapping="NoWrap" 
-                            Alignment="Top" 
-                            MinWidth="100" 
-                            Margin="0,0,0,10" 
-                            Background="#fff" 
-                            Padding="10" />
+                    <Bubbles />
 
-                        <Button 
-                            Clicked="{checkSetTimeout}" 
-                            Width="100%" 
-                            Height="44" 
-                            HitTestMode="LocalBoundsAndChildren">
-                            
-                            <Text 
-                                FontSize="14" 
-                                TextColor="#fff" 
-                                TextAlignment="Center" 
-                                Padding="12" 
-                                Height="18" 
-                                Font="Montserrat">
-                                CHECK STATUS
-                            </Text>
-
-                            <Rectangle 
-                                Fill="#F26522" 
-                                CornerRadius="4" 
-                                Width="100%" 
-                                Height="44">
-                            </Rectangle>
-                        </Button>
-                    </StackPanel>
-
-                    <Image ux:Name="Fish" Width="60" Height="40" X="110%" Y="60%">
-                        <MultiDensityImageSource>
-                            <FileImageSource Density="1" File="Assets/img/fish.png" />
-                            <FileImageSource Density="2" File="Assets/img/fish@2x.png"  />
-                        </MultiDensityImageSource>
-                    </Image>
-                    <Each 
-                        Items="{bubbles}">
-                        <Activated>
-                            <Circle 
-                                ux:Name="Bubble" 
-                                Width="{width}" 
-                                Height="{height}" 
-                                X="{x}" 
-                                Y="100%">
-                                <Stroke 
-                                    Width="1">
-                                    <SolidColor 
-                                        Color="#fff" />
-                                </Stroke>
-                            </Circle>
-                            <Change 
-                                Bubble.Y="0" 
-                                Delay="{delay}" 
-                                Duration="{duration}" 
-                                DurationBack="0" />
-                            <Change 
-                                Bubble.Opacity="0" 
-                                Duration="{duration}" 
-                                Delay="{delay}" 
-                                DurationBack="0" />
-
-                        </Activated>
-                    </Each>
-
-                    <Activated>
-                        <Change 
-                            Fish.X="-40%" 
-                            Duration="9"
-                            Delay="2" 
-                            DurationBack="0" />
-                    </Activated>
+                    <Fish />
 
                     <Image StretchMode="UniformToFill">
                         <MultiDensityImageSource>
@@ -145,27 +35,34 @@
                         </MultiDensityImageSource>
                     </Image>
 
-                    <WhileTrue Value="{isWebsiteDown}">
+                    <WhilePressed>
                         <Change Panel1.Background="#f26522" />
+
                         <Change 
-                            Panel1.Height="520" 
-                            Duration="1" />
+                            Panel1.Height="86%" 
+                            Duration="0.4"
+                            Easing="QuadraticInOut" />
+
                         <Image X="0" Y="-30px">
                             <MultiDensityImageSource>
                                 <FileImageSource Density="1" File="Assets/img/water-orange.png" />
                                 <FileImageSource Density="2" File="Assets/img/water-orange@2x.png" />
                             </MultiDensityImageSource>                            
                         </Image>
+
                         <Rotate 
                             Target="Duck" 
                             Delay="0.25" 
-                            Degrees="-45" 
-                            Duration="1" />
+                            Degrees="-25" 
+                            Duration="0.3"
+                            Easing="QuadraticInOut" />
+
                         <Change 
                             Duck.Y="-64px" 
                             Delay="0.25" 
-                            Duration="0.5" />
-                    </WhileTrue>
+                            Duration="0.3"
+                            Easing="QuadraticInOut" />
+                    </WhilePressed>
 
                     <Image X="0" Y="-30px">
                         <MultiDensityImageSource>
