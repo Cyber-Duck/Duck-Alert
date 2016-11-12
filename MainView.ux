@@ -32,6 +32,10 @@
                 Height="70%" 
                 Alignment="Bottom">
 
+                <WhileTrue Value="{isWebsiteDown}">
+                  <Change Panel1.Background="#f26522" />
+                </WhileTrue>
+
                 <WhilePressed>
                     <Change Panel1.Background="#f26522" />
                     <Change 
