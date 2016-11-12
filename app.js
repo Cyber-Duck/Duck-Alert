@@ -4,7 +4,7 @@ var LocalNotify = require("FuseJS/LocalNotifications");
 var status = Observable("Status Code");
 var failCount = Observable(0);
 var totalCount = Observable(0);
-var url = Observable("http://");
+var url = Observable("");
 var resbody;
 
 var isWebsiteDown = failCount.map(function(value){

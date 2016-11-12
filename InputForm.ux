@@ -1,0 +1,56 @@
+                    <StackPanel 
+                        ux:Name="Input"
+                        ux:Class="InputForm" 
+                        Alignment="Bottom" 
+                        Padding="6"
+                        Margin="20"
+                        Background="#379bd2">
+
+                        <Text 
+                            FontSize="18" 
+                            TextWrapping="Wrap" 
+                            Margin="20,0,20,10" 
+                            Color="#fff"
+                            TextAlignment="Center" 
+                            Font="Montserrat">
+                            ADD YOUR URL TO MONITOR YOUR WEBSITE
+                        </Text>
+                
+                        <TextInput 
+                            Value="{url}" 
+                            PlaceholderText="www.domain.com" 
+                            PlaceholderColor="#ccc" 
+                            TextColor="#888" 
+                            FontSize="16" 
+                            Height="44"
+                            TextWrapping="NoWrap" 
+                            Alignment="Top" 
+                            MinWidth="100" 
+                            Margin="0,0,0,10" 
+                            Background="#fff" 
+                            Padding="10" />
+
+                        <Button 
+                            Clicked="{checkSetTimeout}" 
+                            Width="100%" 
+                            Height="44" 
+                            HitTestMode="LocalBoundsAndChildren">
+                            
+                            <Text 
+                                FontSize="14" 
+                                TextColor="#fff" 
+                                TextAlignment="Center" 
+                                Padding="12" 
+                                Height="18" 
+                                Font="Montserrat">
+                                CHECK STATUS
+                            </Text>
+
+                            <Rectangle 
+                                Fill="#F26522" 
+                                CornerRadius="4" 
+                                Width="100%" 
+                                Height="44">
+                            </Rectangle>
+                        </Button>
+                    </StackPanel>
