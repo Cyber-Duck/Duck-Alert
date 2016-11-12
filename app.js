@@ -7,6 +7,10 @@ var totalCount = Observable(0);
 var url = Observable("http://");
 var resbody;
 
+var isWebsiteDown = failCount.map(function(value){
+  console.log(value);
+  return value >= 1;
+})
 //Local Notifications
 LocalNotify.onReceivedMessage = function(payload) {
     console.log ("Recieved Local Notification: " + payload);
@@ -75,5 +79,6 @@ module.exports = {
     totalCount: totalCount,
     check: check,
     checkSetTimeout: checkSetTimeout,
-    sendNow: sendNow
+    sendNow: sendNow,
+    isWebsiteDown: isWebsiteDown
 };
