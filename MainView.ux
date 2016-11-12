@@ -32,47 +32,12 @@
                 Height="460" 
                 Alignment="Bottom">
 
-                <WhileTrue Value="{isWebsiteDown}">
-                  <Change Panel1.Background="#f26522" />
-                </WhileTrue>
-
-                <WhilePressed>
-                    <Change Panel1.Background="#f26522" />
-                    <Change 
-                        Panel1.Height="520" 
-                        Duration="1" />
-                    <Image File="Assets/img/water-orange@2x.png" X="0" Y="-30px" />
-                    <Image Url="Assets/img/water-orange" />
-                    <Rotate 
-                        Target="Duck" 
-                        Delay="0.25" 
-                        Degrees="-45" 
-                        Duration="1" />
-                    <Change 
-                        Duck.Y="-64px" 
-                        Delay="0.25" 
-                        Duration="0.5" />
-                </WhilePressed>
-
-                <Image File="Assets/img/water-blue@2x.png" X="0" Y="-30px" />
-                <Image Url="Assets/img/water-blue" />
-
-                <Image File="Assets/img/logo@2x.png" ux:Name="Duck" Height="80" Width="120" X="0" Y="-84px" />
-                <Image Url="Assets/img/logo" />
-
                 <Activated>
                     <Change 
                         Duck.X="240" 
                         Duration="3" 
                         DurationBack="0" />
                 </Activated>
-
-                <StackPanel Alignment="Center">
-                    <Text Value="{failCount}" />
-                    <Text Value="{totalCount}" />
-                    <Text Value="{status}" />
-                    <Button Text="Check website" Clicked="{checkSetTimeout}" />
-                </StackPanel>
 
                 <StackPanel 
                     ux:Name="Input"
@@ -116,16 +81,6 @@
                         </Rectangle>
                     </Button>
                 </StackPanel>
-        
-                <StackPanel Alignment="Center">
-                    <Text>FAILURES:</Text>
-                    <Text Value="{failCount}" />
-                    <Text>TOTAL CHECKS:</Text>
-                    <Text Value="{totalCount}" />
-                    <Text>SERVER RESPONSE:</Text>
-                    <Text Value="{status}" />
-                </StackPanel>
-
 
                 <Image ux:Name="Fish" File="Assets/img/fish@2x.png" Width="60" Height="40" X="110%" Y="60%" />
                 <Image Url="Assets/img/fish-bg" />
@@ -168,6 +123,34 @@
 
                 <Image File="Assets/img/flowers-bg.png" StretchMode="UniformToFill" />
                 <Image Url="Assets/img/flowers-bg" />
+
+                <WhileTrue Value="{isWebsiteDown}">
+                  <Change Panel1.Background="#f26522" />
+                </WhileTrue>
+
+                <WhileTrue Value="{isWebsiteDown}">
+                    <Change Panel1.Background="#f26522" />
+                    <Change 
+                        Panel1.Height="520" 
+                        Duration="1" />
+                    <Image File="Assets/img/water-orange@2x.png" X="0" Y="-30px" />
+                    <Image Url="Assets/img/water-orange" />
+                    <Rotate 
+                        Target="Duck" 
+                        Delay="0.25" 
+                        Degrees="-45" 
+                        Duration="1" />
+                    <Change 
+                        Duck.Y="-64px" 
+                        Delay="0.25" 
+                        Duration="0.5" />
+                </WhileTrue>
+
+                <Image File="Assets/img/water-blue@2x.png" X="0" Y="-30px" />
+                <Image Url="Assets/img/water-blue" />
+                <Image File="Assets/img/logo@2x.png" ux:Name="Duck" Height="80" Width="120" X="0" Y="-84px" />
+                <Image Url="Assets/img/logo" />
+
 
             </Panel>
 
