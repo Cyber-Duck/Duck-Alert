@@ -82,8 +82,12 @@
                         </Button>
                     </StackPanel>
 
-                    <Image ux:Name="Fish" File="Assets/img/fish@2x.png" Width="60" Height="40" X="110%" Y="60%" />
-                    <Image Url="Assets/img/fish-bg" />
+                    <Image ux:Name="Fish" Width="60" Height="40" X="110%" Y="60%">
+                        <MultiDensityImageSource>
+                            <HttpImageSource Density="1" File="Assets/img/fish.png" />
+                            <HttpImageSource Density="2" File="Assets/img/fish@2x.png"  />
+                        </MultiDensityImageSource>
+                    </Image>
                     <Each 
                         Items="{bubbles}">
                         <Activated>
@@ -121,16 +125,24 @@
                             DurationBack="0" />
                     </Activated>
 
-                    <Image File="Assets/img/flowers-bg.png" StretchMode="UniformToFill" />
-                    <Image Url="Assets/img/flowers-bg" />
+                    <Image StretchMode="UniformToFill">
+                        <MultiDensityImageSource>
+                            <HttpImageSource Density="1" File="Assets/img/flowers-bg.png" />
+                            <HttpImageSource Density="2" File="Assets/img/flowers-bg@2x.png" />
+                        </MultiDensityImageSource>
+                    </Image>
 
                     <WhileTrue Value="{isWebsiteDown}">
                         <Change Panel1.Background="#f26522" />
                         <Change 
                             Panel1.Height="520" 
                             Duration="1" />
-                        <Image File="Assets/img/water-orange@2x.png" X="0" Y="-30px" />
-                        <Image Url="Assets/img/water-orange" />
+                        <Image X="0" Y="-30px">
+                            <MultiDensityImageSource>
+                                <HttpImageSource Density="1" File="Assets/img/water-orange.png" />
+                                <HttpImageSource Density="2" File="Assets/img/water-orange@2x.png" />
+                            </MultiDensityImageSource>                            
+                        </Image>
                         <Rotate 
                             Target="Duck" 
                             Delay="0.25" 
@@ -142,10 +154,18 @@
                             Duration="0.5" />
                     </WhileTrue>
 
-                    <Image File="Assets/img/water-blue@2x.png" X="0" Y="-30px" />
-                    <Image Url="Assets/img/water-blue" />
-                    <Image File="Assets/img/logo@2x.png" ux:Name="Duck" Height="80" Width="120" X="0" Y="-84px" />
-                    <Image Url="Assets/img/logo" />
+                    <Image X="0" Y="-30px">
+                        <MultiDensityImageSource>
+                            <HttpImageSource Density="1" File="Assets/img/water-blue.png"  />
+                            <HttpImageSource Density="2" File="Assets/img/water-blue@2x.png"  />
+                        </MultiDensityImageSource>
+                    </Image>
+                    <Image ux:Name="Duck" Height="80" Width="120" X="0" Y="-84px">
+                        <MultiDensityImageSource>
+                            <HttpImageSource Density="1" File="Assets/img/logo.png"  />
+                            <HttpImageSource Density="2" File="Assets/img/logo@2x.png"  />
+                        </MultiDensityImageSource>
+                    </Image>
 
                 </Panel>
             </Page>
