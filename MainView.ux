@@ -1,2 +1,12 @@
 <App>
+<JavaScript File= "./app.js" />
+
+<StackPanel Alignment="Center">
+  <Text Value="{failCount}" />
+  <Text Value="{totalCount}" />
+  <Text Value="{status}" />
+  <Button Text="Check website" Clicked="{checkSetTimeout}" />
+</StackPanel>
+  
+
 </App>

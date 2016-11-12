@@ -1,0 +1,15 @@
+# view AndroidManifest.xml #generated:56
+-keep class com.apps.duckalert.Android_android_app_Activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:25
+-keep class com.apps.duckalert.DuckAlert { <init>(...); }
+
+# view AndroidManifest.xml #generated:75
+-keep class com.fuse.LocalNotifications.LocalNotificationReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:68
+-keep class com.fuse.PushNotifications.PushNotificationReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:58
+-keep class com.google.android.gms.gcm.GcmReceiver { <init>(...); }
+

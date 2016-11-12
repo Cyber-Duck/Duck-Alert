@@ -1,0 +1,4 @@
+$: -949279268
+BuildCommand: build.sh
+RunCommand: run.sh
+Product: Duck-Alert.apk
