@@ -1,58 +1,167 @@
 <App>
     <DockPanel Background="#fff">
 
-        <JavaScript File= "./app.js" />
-        <Font ux:Global="Montserrat" File="Assets/Montserrat-Regular.ttf" />
 
-        <StackPanel 
-            Dock="Bottom" 
-            Padding="10" 
-            Background="#379BD2">
-            
-            <TextInput 
-                Value="{titleInput}" 
-                PlaceholderText="www.domain.com" 
-                PlaceholderColor="#ccc" 
-                TextColor="#888" 
-                FontSize="16" 
-                TextWrapping="NoWrap" 
-                Alignment="Top" 
-                MinWidth="100" 
-                Margin="0,0,0,10" 
-                Background="#fff" 
-                Padding="10" />
+            <JavaScript File= "./app.js" />
 
-            <Button 
-                Clicked="{addItem}" 
-                Width="100%" 
-                Height="44" 
-                HitTestMode="LocalBoundsAndChildren">
-                
-                <Text 
-                    FontSize="14" 
-                    TextColor="#fff" 
-                    TextAlignment="Center" 
-                    Padding="12" 
-                    Height="18" 
-                    Font="Montserrat">
-                    CHECK STATUS
-                </Text>
+            <JavaScript>
 
-                <Rectangle 
-                    Fill="#F26522" 
-                    CornerRadius="4" 
-                    Width="100%" 
-                    Height="44">
-                </Rectangle>
-            </Button>
-        </StackPanel>
-        
-        <StackPanel Alignment="Center">
-            <Text Value="{failCount}" />
-            <Text Value="{totalCount}" />
-            <Text Value="{status}" />
-            <Button Text="Check website" Clicked="{checkSetTimeout}" />
-        </StackPanel>
+                module.exports = {
+                    bubbles: [
+                        { width: 20, height: 20, x: "20%", duration: 10, delay: 6 },
+                        { width: 28, height: 28, x: "4%", duration: 8, delay: 8 },
+                        { width: 12, height: 12, x: "9%", duration: 9, delay: 4 },
+                        { width: 18, height: 18, x: "72%", duration: 7, delay: 0 },
+                        { width: 20, height: 20, x: "44%", duration: 10, delay: 12 },
+                        { width: 38, height: 38, x: "80%", duration: 12, delay: 14 },
+                        { width: 12, height: 12, x: "88%", duration: 16, delay: 2 },
+                        { width: 18, height: 18, x: "34%", duration: 18, delay: 3 }
+                    ]
+                };
+
+            </JavaScript>
+
+        <PageControl>
+        <Page>
+            <Font 
+                ux:Global="Montserrat" 
+                File="Assets/Montserrat-Regular.ttf" />
+
+            <Panel 
+                ux:Name="Panel1" 
+                Background="#379bd2" 
+                Height="70%" 
+                Alignment="Bottom">
+
+                <WhilePressed>
+                    <Change Panel1.Background="#f26522" />
+                    <Change 
+                        Panel1.Height="80%" 
+                        Duration="1" />
+                    <Image File="Assets/img/water-orange.png" X="0" Y="-18px" />
+                    <Image Url="Assets/img/water-orange" />
+                    <Rotate 
+                        Target="Duck" 
+                        Delay="0.25" 
+                        Degrees="-45" 
+                        Duration="1" />
+                    <Change 
+                        Duck.Y="-64px" 
+                        Delay="0.25" 
+                        Duration="0.5" />
+                </WhilePressed>
+
+                <Image File="Assets/img/water-blue.png" X="0" Y="-18px" />
+                <Image Url="Assets/img/water-blue" />
+
+                <Image File="Assets/img/logo.png" ux:Name="Duck" Height="80" Width="120" X="0" Y="-84px" />
+                <Image Url="Assets/img/logo" />
+
+                <Activated>
+                    <Change 
+                        Duck.X="240" 
+                        Duration="3" 
+                        DurationBack="0" />
+                </Activated>
+
+                <StackPanel Alignment="Center">
+                    <Text Value="{failCount}" />
+                    <Text Value="{totalCount}" />
+                    <Text Value="{status}" />
+                    <Button Text="Check website" Clicked="{checkSetTimeout}" />
+                </StackPanel>
+
+                <StackPanel 
+                    Y="70%" 
+                    Padding="10">
+                    
+                    <TextInput 
+                        Value="{titleInput}" 
+                        PlaceholderText="www.domain.com" 
+                        PlaceholderColor="#ccc" 
+                        TextColor="#888" 
+                        FontSize="16" 
+                        TextWrapping="NoWrap" 
+                        Alignment="Top" 
+                        MinWidth="100" 
+                        Margin="0,0,0,10" 
+                        Background="#fff" 
+                        Padding="10" />
+
+                    <Button 
+                        Clicked="{addItem}" 
+                        Width="100%" 
+                        Height="44" 
+                        HitTestMode="LocalBoundsAndChildren">
+                        
+                        <Text 
+                            FontSize="14" 
+                            TextColor="#fff" 
+                            TextAlignment="Center" 
+                            Padding="12" 
+                            Height="18" 
+                            Font="Montserrat">
+                            CHECK STATUS
+                        </Text>
+
+                        <Rectangle 
+                            Fill="#F26522" 
+                            CornerRadius="4" 
+                            Width="100%" 
+                            Height="44">
+                        </Rectangle>
+                    </Button>
+                </StackPanel>
+
+                <Each 
+                    Items="{bubbles}">
+                    <Activated>
+                        <Circle 
+                            ux:Name="Bubble" 
+                            Width="{width}" 
+                            Height="{height}" 
+                            X="{x}" 
+                            Y="100%">
+                            <Stroke 
+                                Width="1">
+                                <SolidColor 
+                                    Color="#fff" />
+                            </Stroke>
+                        </Circle>
+                        <Change 
+                            Bubble.Y="0" 
+                            Delay="{delay}" 
+                            Duration="{duration}" 
+                            DurationBack="0" />
+                        <Change 
+                            Bubble.Opacity="0" 
+                            Duration="{duration}" 
+                            Delay="{delay}" 
+                            DurationBack="0" />
+
+                    </Activated>
+                </Each>
+
+                <Image ux:Name="Fish" File="Assets/img/fish.png" Width="50" Height="40" X="110%" Y="60%" />
+                <Image Url="Assets/img/fish-bg" />
+
+                <Activated>
+                    <Change 
+                        Fish.X="-40%" 
+                        Duration="9"
+                        Delay="2" 
+                        DurationBack="0" />
+                </Activated>
+
+                <Image File="Assets/img/flowers-bg.png" StretchMode="UniformToFill" />
+                <Image Url="Assets/img/flowers-bg" />
+
+            </Panel>
+
+
+        </Page>
+
+        </PageControl>
           
     </DockPanel>
 </App>
