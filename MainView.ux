@@ -1,7 +1,7 @@
 <App>
-<<<<<<< HEAD
     <DockPanel Background="#fff">
 
+        <JavaScript File= "./app.js" />
         <Font ux:Global="Montserrat" File="Assets/Montserrat-Regular.ttf" />
 
         <StackPanel 
@@ -46,18 +46,13 @@
                 </Rectangle>
             </Button>
         </StackPanel>
+        
+        <StackPanel Alignment="Center">
+            <Text Value="{failCount}" />
+            <Text Value="{totalCount}" />
+            <Text Value="{status}" />
+            <Button Text="Check website" Clicked="{checkSetTimeout}" />
+        </StackPanel>
+          
     </DockPanel>
 </App>
-=======
-<JavaScript File= "./app.js" />
-
-<StackPanel Alignment="Center">
-  <Text Value="{failCount}" />
-  <Text Value="{totalCount}" />
-  <Text Value="{status}" />
-  <Button Text="Check website" Clicked="{checkSetTimeout}" />
-</StackPanel>
-  
-
-</App>
->>>>>>> 5c7c6849064e83b2dcd964fa76c8b2697492b345
