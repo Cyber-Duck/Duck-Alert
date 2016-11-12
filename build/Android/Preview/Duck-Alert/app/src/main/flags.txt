@@ -1,7 +1,0 @@
-/Users/JLMacAir/Library/Application Support/Fusetools/Fuse/Android/AndroidNDK
-9
-armeabi-v7a
--O3 -g -DNDEBUG
-
- -I/usr/local/share/uno/Packages/Fuse.Scripting.V8/0.40.8 -I/usr/local/share/uno/Packages/UnoCore/0.40.2/prebuilt/Android/include
-/Users/JLMacAir/Library/Application Support/Fusetools/Fuse/Android/AndroidNDK/sources/cxx-stl/stlport/stlport

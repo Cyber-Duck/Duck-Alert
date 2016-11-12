@@ -16,7 +16,7 @@ function sendNow() {
     LocalNotify.now("Boom!", "Just like that", "payload", true);
 };
 
-var url = 'http://jasonlai.tech'
+var url = 'http://jasonlai.tech/';
 function check() {
 
   fetch(url, {

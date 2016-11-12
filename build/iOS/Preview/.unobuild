@@ -1,4 +1,0 @@
-$: 1228265330
-BuildCommand: build.sh
-RunCommand: run.sh
-Product: build/Release-iphoneos/Duck-Alert.app/Duck-Alert
