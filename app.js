@@ -1,5 +1,6 @@
 var Observable = require("FuseJS/Observable");
 var LocalNotify = require("FuseJS/LocalNotifications");
+var phone = require("FuseJS/Phone");
 
 var status = Observable("Status Code");
 var failCount = Observable(0);
@@ -76,6 +77,11 @@ function checkSetTimeout() {
  }, interval)
 }
 
+
+function callTeam() {
+  phone.call("+44 208 953 0070");
+}
+
 module.exports = {
     status: status,
     url: url,
@@ -84,5 +90,6 @@ module.exports = {
     check: check,
     checkSetTimeout: checkSetTimeout,
     sendNow: sendNow,
-    isWebsiteDown: isWebsiteDown
+    isWebsiteDown: isWebsiteDown,
+    callTeam: callTeam
 };
