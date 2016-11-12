@@ -11,6 +11,10 @@ var isWebsiteDown = failCount.map(function(value){
   console.log(value);
   return value >= 1;
 })
+
+var isWebsiteUp = failCount.map(function(value){
+  return value == 0;
+})
 //Local Notifications
 LocalNotify.onReceivedMessage = function(payload) {
     console.log ("Recieved Local Notification: " + payload);

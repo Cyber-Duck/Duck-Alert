@@ -21,6 +21,7 @@
             </JavaScript>
 
         <PageControl>
+
         <Page>
             <Font 
                 ux:Global="Montserrat" 
@@ -125,10 +126,6 @@
                 <Image Url="Assets/img/flowers-bg" />
 
                 <WhileTrue Value="{isWebsiteDown}">
-                  <Change Panel1.Background="#f26522" />
-                </WhileTrue>
-
-                <WhileTrue Value="{isWebsiteDown}">
                     <Change Panel1.Background="#f26522" />
                     <Change 
                         Panel1.Height="520" 
@@ -144,6 +141,8 @@
                         Duck.Y="-64px" 
                         Delay="0.25" 
                         Duration="0.5" />
+                    <Change 
+                        Input.Opacity="0" />
                 </WhileTrue>
 
                 <Image File="Assets/img/water-blue@2x.png" X="0" Y="-30px" />
