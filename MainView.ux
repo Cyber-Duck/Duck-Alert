@@ -22,7 +22,61 @@
                             DurationBack="0" />
                     </Activated>
 
-                    <InputForm />
+                        <StackPanel 
+                        ux:Name="Input"
+                        Alignment="Bottom" 
+                        Padding="6"
+                        Margin="20"
+                        Background="#379bd2">
+
+                        <Text 
+                            FontSize="18" 
+                            TextWrapping="Wrap" 
+                            Margin="20,0,20,10" 
+                            Color="#fff"
+                            TextAlignment="Center" 
+                            Font="Montserrat">
+                            ADD YOUR URL TO MONITOR YOUR WEBSITE
+                        </Text>
+                
+                        <TextInput 
+                            Value="{url}" 
+                            PlaceholderText="www.domain.com" 
+                            PlaceholderColor="#ccc" 
+                            TextColor="#888" 
+                            FontSize="16" 
+                            Height="44"
+                            TextWrapping="NoWrap" 
+                            Alignment="Top" 
+                            MinWidth="100" 
+                            Margin="0,0,0,10" 
+                            Background="#fff" 
+                            Padding="10" />
+
+                        <Button 
+                            Clicked="{checkSetTimeout}" 
+                            Width="100%" 
+                            Height="44" 
+                            HitTestMode="LocalBoundsAndChildren">
+                            
+                            <Text 
+                                FontSize="14" 
+                                TextColor="#fff" 
+                                TextAlignment="Center" 
+                                Padding="12" 
+                                Height="18" 
+                                Font="Montserrat">
+                                CHECK STATUS
+                            </Text>
+
+                            <Rectangle 
+                                Fill="#F26522" 
+                                CornerRadius="4" 
+                                Width="100%" 
+                                Height="44">
+                            </Rectangle>
+                        </Button>
+                    </StackPanel>
 
                     <Bubbles />
 
@@ -35,7 +89,60 @@
                         </MultiDensityImageSource>
                     </Image>
 
-                    <WhilePressed>
+                    <StackPanel ux:Name="PhonePanel" Alignment="Bottom" Opacity="0">
+                        <Button>
+                            <Circle ux:Name="Phone" Width="60" Height="60" Color="#fff">
+                                <Image StretchMode="UniformToFill">
+                                    <MultiDensityImageSource>
+                                        <FileImageSource Density="1" File="Assets/img/button-call.png" />
+                                        <FileImageSource Density="2" File="Assets/img/button-call@2x.png" />
+                                    </MultiDensityImageSource>
+                                </Image>
+                            </Circle>
+                        </Button>
+
+                        <Text 
+                            ux:Name="PhoneText"
+                            Opacity="0"
+                            FontSize="18" 
+                            TextWrapping="Wrap" 
+                            Margin="0,20,0,60" 
+                            Color="#fff"
+                            Font="Montserrat"
+                            TextAlignment="Center">
+                            CALL THE TEAM
+                        </Text>
+                    </StackPanel>
+
+                    <StackPanel ux:Name="TickPanel" Alignment="Bottom" Opacity="0">
+                        <Button>
+                            <Circle ux:Name="Tick" Width="60" Height="60" Color="#fff">
+                                <Image StretchMode="UniformToFill">
+                                    <MultiDensityImageSource>
+                                        <FileImageSource Density="1" File="Assets/img/check.png" />
+                                        <FileImageSource Density="2" File="Assets/img/check@2x.png" />
+                                    </MultiDensityImageSource>
+                                </Image>
+                            </Circle>
+                        </Button>
+
+                        <Text 
+                            ux:Name="TickText"
+                            Opacity="0"
+                            FontSize="18" 
+                            TextWrapping="Wrap" 
+                            Margin="0,20,0,60" 
+                            Color="#fff"
+                            Font="Montserrat"
+                            TextAlignment="Center">
+                            ALL GOOD!
+                        </Text>
+                    </StackPanel>
+
+
+                    <!-- Site is Fail -->
+
+                    <WhileTrue Value="{isWebsiteDown}">
                         <Change Panel1.Background="#f26522" />
 
                         <Change 
@@ -62,7 +169,58 @@
                             Delay="0.25" 
                             Duration="0.3"
                             Easing="QuadraticInOut" />
+
+                        <Change 
+                            Input.Opacity="0" />
+
+                        <Change 
+                            PhonePanel.Opacity="1" 
+                            Duration="0.1"
+                            Easing="QuadraticInOut" />
+                        <Change 
+                            PhoneText.Opacity="1" 
+                            Duration="0.6"
+                            Easing="QuadraticInOut" />
+                        <Change 
+                            Phone.Width="200%" 
+                            Duration="0.2" 
+                            Easing="QuadraticInOut" />
+                        <Change 
+                            Phone.Height="200%" 
+                            Duration="0.2" 
+                            Easing="QuadraticInOut" />
+                    </WhileTrue>
+
+                    <!-- Site is Fail End -->
+
+
+                    <!-- Site is Success -->
+
+                    <!-- <WhileTrue Value="{isWebsiteUp}"> -->
+                    <WhilePressed>
+
+                        <Change 
+                            Input.Opacity="0" />
+
+                        <Change 
+                            TickPanel.Opacity="1" 
+                            Duration="0.1"
+                            Easing="QuadraticInOut" />
+                        <Change 
+                            TickText.Opacity="1" 
+                            Duration="0.6"
+                            Easing="QuadraticInOut" />
+                        <Change 
+                            Tick.Width="200%" 
+                            Duration="0.2" 
+                            Easing="QuadraticInOut" />
+                        <Change 
+                            Tick.Height="200%" 
+                            Duration="0.2" 
+                            Easing="QuadraticInOut" />
                     </WhilePressed>
+
+                    <!-- Site is Success End -->
 
                     <Image X="0" Y="-30px">
                         <MultiDensityImageSource>
