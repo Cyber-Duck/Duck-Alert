@@ -90,7 +90,7 @@
                     </Image>
 
                     <StackPanel ux:Name="PhonePanel" Alignment="Bottom" Opacity="0">
-                        <Button>
+                        <Button Clicked="{callTeam}">
                             <Circle ux:Name="Phone" Width="60" Height="60" Color="#fff">
                                 <Image StretchMode="UniformToFill">
                                     <MultiDensityImageSource>
@@ -115,16 +115,14 @@
                     </StackPanel>
 
                     <StackPanel ux:Name="TickPanel" Alignment="Bottom" Opacity="0">
-                        <Button>
-                            <Circle ux:Name="Tick" Width="60" Height="60" Color="#fff">
-                                <Image StretchMode="UniformToFill">
-                                    <MultiDensityImageSource>
-                                        <FileImageSource Density="1" File="Assets/img/check.png" />
-                                        <FileImageSource Density="2" File="Assets/img/check@2x.png" />
-                                    </MultiDensityImageSource>
-                                </Image>
-                            </Circle>
-                        </Button>
+                        <Circle ux:Name="Tick" Width="60" Height="60" Color="#fff">
+                            <Image StretchMode="UniformToFill">
+                                <MultiDensityImageSource>
+                                    <FileImageSource Density="1" File="Assets/img/check.png" />
+                                    <FileImageSource Density="2" File="Assets/img/check@2x.png" />
+                                </MultiDensityImageSource>
+                            </Image>
+                        </Circle>
 
                         <Text 
                             ux:Name="TickText"
