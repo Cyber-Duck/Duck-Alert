@@ -29,15 +29,15 @@
             <Panel 
                 ux:Name="Panel1" 
                 Background="#379bd2" 
-                Height="70%" 
+                Height="460" 
                 Alignment="Bottom">
 
                 <WhilePressed>
                     <Change Panel1.Background="#f26522" />
                     <Change 
-                        Panel1.Height="80%" 
+                        Panel1.Height="520" 
                         Duration="1" />
-                    <Image File="Assets/img/water-orange.png" X="0" Y="-18px" />
+                    <Image File="Assets/img/water-orange@2x.png" X="0" Y="-30px" />
                     <Image Url="Assets/img/water-orange" />
                     <Rotate 
                         Target="Duck" 
@@ -50,10 +50,10 @@
                         Duration="0.5" />
                 </WhilePressed>
 
-                <Image File="Assets/img/water-blue.png" X="0" Y="-18px" />
+                <Image File="Assets/img/water-blue@2x.png" X="0" Y="-30px" />
                 <Image Url="Assets/img/water-blue" />
 
-                <Image File="Assets/img/logo.png" ux:Name="Duck" Height="80" Width="120" X="0" Y="-84px" />
+                <Image File="Assets/img/logo@2x.png" ux:Name="Duck" Height="80" Width="120" X="0" Y="-84px" />
                 <Image Url="Assets/img/logo" />
 
                 <Activated>
@@ -71,6 +71,7 @@
                 </StackPanel>
 
                 <StackPanel 
+                    ux:Name="Input"
                     Y="70%" 
                     Padding="10">
             
@@ -121,6 +122,9 @@
                     <Text Value="{status}" />
                 </StackPanel>
 
+
+                <Image ux:Name="Fish" File="Assets/img/fish@2x.png" Width="60" Height="40" X="110%" Y="60%" />
+                <Image Url="Assets/img/fish-bg" />
                 <Each 
                     Items="{bubbles}">
                     <Activated>
@@ -149,9 +153,6 @@
 
                     </Activated>
                 </Each>
-
-                <Image ux:Name="Fish" File="Assets/img/fish.png" Width="50" Height="40" X="110%" Y="60%" />
-                <Image Url="Assets/img/fish-bg" />
 
                 <Activated>
                     <Change 
