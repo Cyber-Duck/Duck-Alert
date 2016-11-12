@@ -15,7 +15,6 @@
     "Fuse.Android",
     "Fuse.iOS"
   ],
-  "Icon": "Assets/icon.png",
   "Includes": [
     "*"
   ],
@@ -25,29 +24,30 @@
     "VersionName": "Beta",
     "Description": "Check your website status.",
     "Icons": {
-      "MDPI": "Assets/Android/mdpi.png",
-      "HDPI": "Assets/Android/hdpi.png",
-      "XHDPI": "Assets/Android/xhdpi.png",
-      "XXHDPI": "Assets/Android/xxhdpi.png",
-      "XXXHDPI": "Assets/Android/xxxhdpi.png"
+      "MDPI": "Assets/Android/Android_HDPI.png",
+      "HDPI": "Assets/Android/Android_MDPI.png",
+      "XHDPI": "Assets/Android/Android_XHDPI.png",
+      "XXHDPI": "Assets/Android/Android_XXHDPI.png",
+      "XXXHDPI": "Assets/Android/Android_XXXHDPI.png"
     }
   },
   "iOS": {
     "BundleName": "Duck Alert",
     "Icons": {
-      "iPhone_29_2x": "Assets/iOS/Icon_iPhoneSettings_29@2x.png",
-      "iPhone_29_3x": "Assets/iOS/Icon_iPhoneSettings_29@3x.png",
-      "iPhone_40_2x": "Assets/iOS/Icon_iPhoneSpotlight_40@2x.png",
-      "iPhone_40_3x": "Assets/iOS/Icon_iPhoneSpotlight_40@3x.png",
-      "iPhone_60_2x": "Assets/iOS/Icon_iPhoneApp_60@2x.png",
-      "iPhone_60_3x": "Assets/iOS/Icon_iPhoneApp_60@3x.png",
-      "iPad_29_1x": "Assets/iOS/Icon_iPadSettings_29.png",
-      "iPad_29_2x": "Assets/iOS/Icon_iPadSettings_29@2x.png",
-      "iPad_76_1x": "Assets/iOS/Icon_iPadApp_76.png",
-      "iPad_76_2x": "Assets/iOS/Icon_iPadApp_76@2x.png",
-      "iPad_83.5_2x": "Assets/iOS/Icon_iPadProApp_83.5@2x.png",
-      "iPad_40_1x": "Assets/iOS/Icon_iPadSpotlight_40.png",
-      "iPad_40_2x": "Assets/iOS/Icon_iPadSpotlight_40@2x.png"
+      "iPhone_29_1x": "Assets/iOS/iOS_iPhone_29_1x.png",
+      "iPhone_29_2x": "Assets/iOS/iOS_iPhone_29_2x.png",
+      "iPhone_29_3x": "Assets/iOS/iOS_iPhone_29_3x.png",
+      "iPhone_40_2x": "Assets/iOS/iOS_iPhone_40_2x.png",
+      "iPhone_40_3x": "Assets/iOS/iOS_iPhone_40_3x.png",
+      "iPhone_60_2x": "Assets/iOS/iOS_iPhone_60_2x.png",
+      "iPhone_60_3x": "Assets/iOS/iOS_iPhone_60_3x.png",
+      "iPad_29_1x": "Assets/iOS/iOS_iPad_29_1x.png",
+      "iPad_29_2x": "Assets/iOS/iOS_iPad_29_2x.png",
+      "iPad_40_2x": "Assets/iOS/iOS_iPad_40_2x.png",
+      "iPad_40_3x": "Assets/iOS/iOS_iPad_40_3x.png",
+      "iPad_76_1x": "Assets/iOS/iOS_iPad_76_1x.png",
+      "iPad_76_2x": "Assets/iOS/iOS_iPad_76_2x.png",
+      "iPad_83.5_2x": "Assets/iOS/iOS_iPad_83.5_2x.png"
     }
   }
 }

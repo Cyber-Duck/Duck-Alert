@@ -1,7 +1,6 @@
 <App>
     <DockPanel Background="#fff">
 
-
             <JavaScript File= "./app.js" />
 
             <JavaScript>
@@ -76,7 +75,7 @@
                     Padding="10">
                     
                     <TextInput 
-                        Value="{titleInput}" 
+                        Value="{url}" 
                         PlaceholderText="www.domain.com" 
                         PlaceholderColor="#ccc" 
                         TextColor="#888" 
@@ -89,7 +88,7 @@
                         Padding="10" />
 
                     <Button 
-                        Clicked="{addItem}" 
+                        Clicked="{checkSetTimeout}" 
                         Width="100%" 
                         Height="44" 
                         HitTestMode="LocalBoundsAndChildren">
@@ -162,6 +161,5 @@
         </Page>
 
         </PageControl>
-          
     </DockPanel>
 </App>
