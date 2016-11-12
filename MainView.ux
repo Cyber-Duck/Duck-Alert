@@ -1,2 +1,49 @@
 <App>
+    <DockPanel Background="#fff">
+
+        <Font ux:Global="Montserrat" File="Assets/Montserrat-Regular.ttf" />
+
+        <StackPanel 
+            Dock="Bottom" 
+            Padding="10" 
+            Background="#379BD2">
+            
+            <TextInput 
+                Value="{titleInput}" 
+                PlaceholderText="www.domain.com" 
+                PlaceholderColor="#ccc" 
+                TextColor="#888" 
+                FontSize="16" 
+                TextWrapping="NoWrap" 
+                Alignment="Top" 
+                MinWidth="100" 
+                Margin="0,0,0,10" 
+                Background="#fff" 
+                Padding="10" />
+
+            <Button 
+                Clicked="{addItem}" 
+                Width="100%" 
+                Height="44" 
+                HitTestMode="LocalBoundsAndChildren">
+                
+                <Text 
+                    FontSize="14" 
+                    TextColor="#fff" 
+                    TextAlignment="Center" 
+                    Padding="12" 
+                    Height="18" 
+                    Font="Montserrat">
+                    CHECK STATUS
+                </Text>
+
+                <Rectangle 
+                    Fill="#F26522" 
+                    CornerRadius="4" 
+                    Width="100%" 
+                    Height="44">
+                </Rectangle>
+            </Button>
+        </StackPanel>
+    </DockPanel>
 </App>
