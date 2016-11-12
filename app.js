@@ -4,6 +4,7 @@ var LocalNotify = require("FuseJS/LocalNotifications");
 var status = Observable("Status Code");
 var failCount = Observable(0);
 var totalCount = Observable(0);
+var url = Observable("http://");
 
 //Local Notifications
 LocalNotify.onReceivedMessage = function(payload) {
@@ -16,10 +17,9 @@ function sendNow() {
     LocalNotify.now("Boom!", "Just like that", "payload", true);
 };
 
-var url = 'http://jasonlai.tech/';
 function check() {
 
-  fetch(url, {
+  fetch(url.value, {
       method: 'GET',
       headers: { "Content-type": "application/json"}
   }).then(function(response) {
@@ -39,20 +39,22 @@ var interval = 5000;
 
 function checkSetTimeout() {
  
+ console.log(url.value);
  check();
- totalCount.value ++;
 
  setTimeout(function(){
 
   if (status.value === 200) {
     interval = 5000;
     failCount.value = 0;
+    totalCount.value ++;
     checkSetTimeout();
   }
   else {
     interval = 1000;
     checkSetTimeout();
     failCount.value ++;
+    totalCount.value ++;
       if (failCount.value >= 3) {
         sendNow();
         console.log("Contact Cyber Duck!") 
@@ -62,9 +64,9 @@ function checkSetTimeout() {
  }, interval)
 }
 
-
 module.exports = {
     status: status,
+    url: url,
     failCount: failCount,
     totalCount: totalCount,
     check: check,
