@@ -48,10 +48,12 @@
         </StackPanel>
         
         <StackPanel Alignment="Center">
+            <Text>FAILURES:</Text>
             <Text Value="{failCount}" />
+            <Text>TOTAL CHECKS:</Text>
             <Text Value="{totalCount}" />
+            <Text>SERVER RESPONSE:</Text>
             <Text Value="{status}" />
-            <Button Text="Check website" Clicked="{checkSetTimeout}" />
         </StackPanel>
           
     </DockPanel>
