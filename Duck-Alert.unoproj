@@ -1,6 +1,6 @@
 {
   "Title": "Duck Alert",
-  "RootNamespace":"DuckAlert",
+  "RootNamespace": "DuckAlert",
   "Description": "Check your website status.",
   "Publisher": "Cyber-Duck Ltd",
   "Version": "0.1",
@@ -11,7 +11,7 @@
   	"Fuse",
   	"FuseJS",
     "Fuse.PushNotifications",
-    "Fuse.LocalNotifications"
+    "Fuse.LocalNotifications",
     "Fuse.Android",
     "Fuse.iOS"
   ],
