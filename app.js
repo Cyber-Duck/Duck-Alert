@@ -5,6 +5,7 @@ var status = Observable("Status Code");
 var failCount = Observable(0);
 var totalCount = Observable(0);
 var url = Observable("http://");
+var resbody;
 
 //Local Notifications
 LocalNotify.onReceivedMessage = function(payload) {
@@ -23,6 +24,7 @@ function check() {
       method: 'GET',
       headers: { "Content-type": "application/json"}
   }).then(function(response) {
+
       status.value = response.status; //sets Observable to server status
       
       // return response.json();    // This returns a promise
@@ -31,6 +33,7 @@ function check() {
       
   }).catch(function(err) {
       // An error occurred somewhere in the Promise chain
+      console.log(err)
   });
 
 } 
@@ -41,6 +44,7 @@ function checkSetTimeout() {
  
  console.log(url.value);
  check();
+ console.log("RES BODY "+resbody);
 
  setTimeout(function(){
 
