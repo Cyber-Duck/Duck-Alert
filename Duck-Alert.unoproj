@@ -13,7 +13,8 @@
     "Fuse.PushNotifications",
     "Fuse.LocalNotifications",
     "Fuse.Android",
-    "Fuse.iOS"
+    "Fuse.iOS",
+    "Fuse.Launcher"
   ],
   "Includes": [
     "*"
