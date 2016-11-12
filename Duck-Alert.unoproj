@@ -35,19 +35,19 @@
   "iOS": {
     "BundleName": "Duck Alert",
     "Icons": {
-      "iPhone_29_2x": "Assets/iOS/Icon_iPhoneSettings_29@2x.png",
-      "iPhone_29_3x": "Assets/iOS/Icon_iPhoneSettings_29@3x.png",
-      "iPhone_40_2x": "Assets/iOS/Icon_iPhoneSpotlight_40@2x.png",
-      "iPhone_40_3x": "Assets/iOS/Icon_iPhoneSpotlight_40@3x.png",
-      "iPhone_60_2x": "Assets/iOS/Icon_iPhoneApp_60@2x.png",
-      "iPhone_60_3x": "Assets/iOS/Icon_iPhoneApp_60@3x.png",
-      "iPad_29_1x": "Assets/iOS/Icon_iPadSettings_29.png",
-      "iPad_29_2x": "Assets/iOS/Icon_iPadSettings_29@2x.png",
-      "iPad_76_1x": "Assets/iOS/Icon_iPadApp_76.png",
-      "iPad_76_2x": "Assets/iOS/Icon_iPadApp_76@2x.png",
-      "iPad_83.5_2x": "Assets/iOS/Icon_iPadProApp_83.5@2x.png",
-      "iPad_40_1x": "Assets/iOS/Icon_iPadSpotlight_40.png",
-      "iPad_40_2x": "Assets/iOS/Icon_iPadSpotlight_40@2x.png"
+      "iPhone_29_2x": "Assets/iOS/iPhone_29_2x.png",
+      "iPhone_29_3x": "Assets/iOS/iPhone_29_3x.png",
+      "iPhone_40_2x": "Assets/iOS/iPhone_40_2x.png",
+      "iPhone_40_3x": "Assets/iOS/iPhone_40_3x.png",
+      "iPhone_60_2x": "Assets/iOS/iPhone_60_2x.png",
+      "iPhone_60_3x": "Assets/iOS/iPhone_60_3x.png",
+      "iPad_29_1x": "Assets/iOS/iPad_29_1x.png",
+      "iPad_29_2x": "Assets/iOS/iPad_29_2x.png",
+      "iPad_76_1x": "Assets/iOS/iPad_76_1x.png",
+      "iPad_76_2x": "Assets/iOS/iPad_76_2x.png",
+      "iPad_83.5_2x": "Assets/iOS/iPad_83.5_2x.png",
+      "iPad_40_1x": "Assets/iOS/iPad_40_1x.png",
+      "iPad_40_2x": "Assets/iOS/iPad_40_2x.png"
     }
   }
 }
