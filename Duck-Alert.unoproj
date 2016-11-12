@@ -8,8 +8,10 @@
     "Orientations": "Portrait"
   },
   "Packages": [
-    "Fuse",
-    "FuseJS",
+  	"Fuse",
+  	"FuseJS",
+    "Fuse.PushNotifications",
+    "Fuse.LocalNotifications"
     "Fuse.Android",
     "Fuse.iOS"
   ],
