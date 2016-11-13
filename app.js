@@ -79,7 +79,11 @@ function checkSetTimeout() {
 
 
 function callTeam() {
-  phone.call("+44 208 953 0070");
+  phone.call("+442089530070");
+}
+
+function addDomain() {
+  router.goto("PageAdd")
 }
 
 module.exports = {
@@ -91,5 +95,6 @@ module.exports = {
     checkSetTimeout: checkSetTimeout,
     sendNow: sendNow,
     isWebsiteDown: isWebsiteDown,
-    callTeam: callTeam
+    callTeam: callTeam,
+    addDomain: addDomain
 };

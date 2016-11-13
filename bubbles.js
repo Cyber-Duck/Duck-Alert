@@ -8,5 +8,10 @@ module.exports = {
         { width: 38, height: 38, x: "80%", duration: 12, delay: 14 },
         { width: 12, height: 12, x: "88%", duration: 16, delay: 2 },
         { width: 18, height: 18, x: "34%", duration: 18, delay: 3 }
+    ],
+
+    domains: [
+        { domain: 'http://beta1.cyber-duck.co.uk/duck-alert' },
+        { domain: 'http://beta1.cyber-duck.co.uk/duck-alert-fail' }
     ]
 };

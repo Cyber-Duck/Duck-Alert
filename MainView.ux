@@ -1,82 +1,29 @@
 <App>
     <DockPanel Background="#fff">
 
+        <Panel ux:Class="BlankButton" HitTestMode="LocalBoundsAndChildren" />
+        <Router ux:Name="router" />
+
         <JavaScript File= "./app.js" />
         <JavaScript File="./bubbles.js" />
-        <Font 
-            ux:Global="Montserrat" 
-            File="Assets/Montserrat-Regular.ttf" />
+        <Font ux:Global="Montserrat"  File="Assets/Montserrat-Regular.ttf" />
 
         <PageControl>
             <Page>
-                <DockPanel 
-                    ux:Name="Panel1" 
-                    Background="#379bd2" 
-                    Height="80%" 
-                    Alignment="Bottom">
+                <DockPanel ux:Name="Panel2" Background="#379bd2" Height="80%" Alignment="Bottom">
 
                     <Activated>
-                        <Change 
-                            Duck.X="240" 
-                            Duration="3" 
-                            DurationBack="0" />
+                        <Change Duck2.X="240" Duration="3" DurationBack="0" Easing="QuinticOut" />
                     </Activated>
 
-                        <StackPanel 
-                        ux:Name="Input"
-                        Alignment="Bottom" 
-                        Padding="6"
-                        Margin="20"
-                        Background="#379bd2">
-
-                        <Text 
-                            FontSize="18" 
-                            TextWrapping="Wrap" 
-                            Margin="20,0,20,10" 
-                            Color="#fff"
-                            TextAlignment="Center" 
-                            Font="Montserrat">
-                            ADD YOUR URL TO MONITOR YOUR WEBSITE
-                        </Text>
-                
-                        <TextInput 
-                            Value="{url}" 
-                            PlaceholderText="www.domain.com" 
-                            PlaceholderColor="#ccc" 
-                            TextColor="#888" 
-                            FontSize="16" 
-                            Height="44"
-                            TextWrapping="NoWrap" 
-                            Alignment="Top" 
-                            MinWidth="100" 
-                            Margin="0,0,0,10" 
-                            Background="#fff" 
-                            Padding="10" />
-
-                        <Button 
-                            Clicked="{checkSetTimeout}" 
-                            Width="100%" 
-                            Height="44" 
-                            HitTestMode="LocalBoundsAndChildren">
-                            
-                            <Text 
-                                FontSize="14" 
-                                TextColor="#fff" 
-                                TextAlignment="Center" 
-                                Padding="12" 
-                                Height="18" 
-                                Font="Montserrat">
-                                CHECK STATUS
-                            </Text>
-
-                            <Rectangle 
-                                Fill="#F26522" 
-                                CornerRadius="4" 
-                                Width="100%" 
-                                Height="44">
-                            </Rectangle>
-                        </Button>
-                    </StackPanel>
+                    <BlankButton Alignment="BottomRight" Clicked="{addDomain}" Width="60" Height="60">
+                        <Panel Layer="Background" Height="16">
+                            <Panel Width="30" Height="2" Background="#ddd" />
+                            <Panel Width="30" Height="2" Background="#ddd">
+                                <Rotation Degrees="-90"/>
+                            </Panel>
+                        </Panel>
+                    </BlankButton>
 
                     <Bubbles />
 
@@ -89,8 +36,88 @@
                         </MultiDensityImageSource>
                     </Image>
 
+                    <!-- Site is Fail -->
+                    <WhileTrue Value="{isWebsiteDown}">
+                        <Change Panel1.Background="#f26522" />
+                        <Change Panel1.Height="86%" Duration="0.4" Easing="QuadraticInOut" />
+                        <Image X="0" Y="-30px">
+                            <MultiDensityImageSource>
+                                <FileImageSource Density="1" File="Assets/img/water-orange.png" />
+                                <FileImageSource Density="2" File="Assets/img/water-orange@2x.png" />
+                            </MultiDensityImageSource>                            
+                        </Image>
+                        <Rotate Target="Duck" Delay="0.25" Degrees="-25" Duration="0.3" Easing="QuadraticInOut" />
+                        <Change Duck.Y="-64px" Delay="0.25" Duration="0.3" Easing="QuadraticInOut" />
+                        <Change Input.Opacity="0" />
+                        <Change PhonePanel.Opacity="1" Duration="0.1" Easing="QuadraticInOut" />
+                        <Change PhoneText.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
+                        <Change Phone.Width="200%" Duration="0.2" Easing="QuadraticInOut" />
+                        <Change Phone.Height="200%" Duration="0.2" Easing="QuadraticInOut" />
+                    </WhileTrue>
+
+                    <!-- Site is Fail End -->
+
+                    <StackPanel ux:Name="TickPanel" Alignment="Bottom" Opacity="1">
+                        <Circle ux:Name="Tick" Width="160" Height="160" Color="#fff">
+                            <Image StretchMode="UniformToFill">
+                                <MultiDensityImageSource>
+                                    <FileImageSource Density="1" File="Assets/img/check.png" />
+                                    <FileImageSource Density="2" File="Assets/img/check@2x.png" />
+                                </MultiDensityImageSource>
+                            </Image>
+                        </Circle>
+
+                        <Text ux:Name="TickText" Opacity="1" FontSize="18" TextWrapping="Wrap" Margin="0,20,0,60" Color="#fff" Font="Montserrat" TextAlignment="Center">
+                            ALL GOOD!
+                        </Text>
+                    </StackPanel>
+
+                    <Image X="0" Y="-30px">
+                        <MultiDensityImageSource>
+                            <FileImageSource Density="1" File="Assets/img/water-blue.png"  />
+                            <FileImageSource Density="2" File="Assets/img/water-blue@2x.png"  />
+                        </MultiDensityImageSource>
+                    </Image>
+                    <Image ux:Name="Duck2" Height="60" Width="90" X="0" Y="-114px" Margin="10,0,0,0">
+                        <MultiDensityImageSource>
+                            <FileImageSource Density="1" File="Assets/img/logo.png"  />
+                            <FileImageSource Density="2" File="Assets/img/logo@2x.png"  />
+                        </MultiDensityImageSource>
+                    </Image>
+
+                    <BottomFrameBackground Dock="Bottom" />
+                </DockPanel>                
+            </Page>
+
+            <Page ux:Name="PageAdd">
+                <DockPanel ux:Name="Panel1" Background="#379bd2" Height="80%" Alignment="Bottom">
+                    <Activated>
+                        <Change Duck.X="240" Duration="3" DurationBack="0" Easing="QuinticOut" />
+                    </Activated>
+
+                    <StackPanel ux:Name="Input" Alignment="Bottom" Padding="6" Margin="20" Background="#379bd2">
+                        <Text FontSize="18" TextWrapping="Wrap" Margin="20,0,20,10" Color="#fff" TextAlignment="Center" Font="Montserrat">
+                            ADD YOUR URL TO MONITOR YOUR WEBSITE
+                        </Text>
+                
+                        <TextInput Value="{url}" PlaceholderText="www.domain.com" PlaceholderColor="#ccc" 
+                            TextColor="#888" FontSize="16" Height="44" TextWrapping="NoWrap" Alignment="Top" MinWidth="100" 
+                            Margin="0,0,0,10" Background="#fff" InputHint="URL" Padding="10" ActionStyle="Send" AutoCorrectHint="Disabled" />
+
+                        <Button Clicked="{checkSetTimeout}" Width="100%" Height="44" HitTestMode="LocalBoundsAndChildren">
+                            <Text FontSize="14" TextColor="#fff" TextAlignment="Center" Padding="12" Height="18" Font="Montserrat">
+                                CHECK STATUS
+                            </Text>
+                            <Rectangle Fill="#F26522" CornerRadius="4" Width="100%" Height="44" />
+                        </Button>
+                    </StackPanel>
+
+                    <Bubbles />
+
+                    <Fish />
+
                     <StackPanel ux:Name="PhonePanel" Alignment="Bottom" Opacity="0">
-                        <Button Clicked="{callTeam}">
+                        <Button Clicked="{callTeam}" HitTestMode="LocalBoundsAndChildren">
                             <Circle ux:Name="Phone" Width="60" Height="60" Color="#fff">
                                 <Image StretchMode="UniformToFill">
                                     <MultiDensityImageSource>
@@ -101,52 +128,23 @@
                             </Circle>
                         </Button>
 
-                        <Text 
-                            ux:Name="PhoneText"
-                            Opacity="0"
-                            FontSize="18" 
-                            TextWrapping="Wrap" 
-                            Margin="0,20,0,60" 
-                            Color="#fff"
-                            Font="Montserrat"
-                            TextAlignment="Center">
+                        <Text ux:Name="PhoneText" Opacity="0" FontSize="18" 
+                            TextWrapping="Wrap" Margin="0,20,0,60" Color="#fff" Font="Montserrat" TextAlignment="Center">
                             CALL THE TEAM
                         </Text>
                     </StackPanel>
 
-                    <StackPanel ux:Name="TickPanel" Alignment="Bottom" Opacity="0">
-                        <Circle ux:Name="Tick" Width="60" Height="60" Color="#fff">
-                            <Image StretchMode="UniformToFill">
-                                <MultiDensityImageSource>
-                                    <FileImageSource Density="1" File="Assets/img/check.png" />
-                                    <FileImageSource Density="2" File="Assets/img/check@2x.png" />
-                                </MultiDensityImageSource>
-                            </Image>
-                        </Circle>
-
-                        <Text 
-                            ux:Name="TickText"
-                            Opacity="0"
-                            FontSize="18" 
-                            TextWrapping="Wrap" 
-                            Margin="0,20,0,60" 
-                            Color="#fff"
-                            Font="Montserrat"
-                            TextAlignment="Center">
-                            ALL GOOD!
-                        </Text>
-                    </StackPanel>
-
+                    <Image StretchMode="UniformToFill">
+                        <MultiDensityImageSource>
+                            <FileImageSource Density="1" File="Assets/img/flowers-bg.png" />
+                            <FileImageSource Density="2" File="Assets/img/flowers-bg@2x.png" />
+                        </MultiDensityImageSource>
+                    </Image>
 
                     <!-- Site is Fail -->
-
                     <WhileTrue Value="{isWebsiteDown}">
                         <Change Panel1.Background="#f26522" />
-
-                        <Change 
-                            Panel1.Height="86%" 
-                            Duration="0.4"
-                            Easing="QuadraticInOut" />
+                        <Change Panel1.Height="86%" Duration="0.4" Easing="QuadraticInOut" />
 
                         <Image X="0" Y="-30px">
                             <MultiDensityImageSource>
@@ -155,69 +153,26 @@
                             </MultiDensityImageSource>                            
                         </Image>
 
-                        <Rotate 
-                            Target="Duck" 
-                            Delay="0.25" 
-                            Degrees="-25" 
-                            Duration="0.3"
-                            Easing="QuadraticInOut" />
-
-                        <Change 
-                            Duck.Y="-64px" 
-                            Delay="0.25" 
-                            Duration="0.3"
-                            Easing="QuadraticInOut" />
-
-                        <Change 
-                            Input.Opacity="0" />
-
-                        <Change 
-                            PhonePanel.Opacity="1" 
-                            Duration="0.1"
-                            Easing="QuadraticInOut" />
-                        <Change 
-                            PhoneText.Opacity="1" 
-                            Duration="0.6"
-                            Easing="QuadraticInOut" />
-                        <Change 
-                            Phone.Width="200%" 
-                            Duration="0.2" 
-                            Easing="QuadraticInOut" />
-                        <Change 
-                            Phone.Height="200%" 
-                            Duration="0.2" 
-                            Easing="QuadraticInOut" />
+                        <Rotate Target="Duck" Delay="0.25" Degrees="-25" Duration="0.3" Easing="QuadraticInOut" />
+                        <Change Duck.Y="-64px" Delay="0.25" Duration="0.3" Easing="QuadraticInOut" />
+                        <Change Input.Opacity="0" />
+                        <Change PhonePanel.Opacity="1" Duration="0.1" Easing="QuadraticInOut" />
+                        <Change PhoneText.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
+                        <Change Phone.Width="200%" Duration="0.2" Easing="QuadraticInOut" />
+                        <Change Phone.Height="200%" Duration="0.2" Easing="QuadraticInOut" />
                     </WhileTrue>
-
                     <!-- Site is Fail End -->
-
 
                     <!-- Site is Success -->
 
                     <!-- <WhileTrue Value="{isWebsiteUp}"> -->
                     <WhilePressed>
-
-                        <Change 
-                            Input.Opacity="0" />
-
-                        <Change 
-                            TickPanel.Opacity="1" 
-                            Duration="0.1"
-                            Easing="QuadraticInOut" />
-                        <Change 
-                            TickText.Opacity="1" 
-                            Duration="0.6"
-                            Easing="QuadraticInOut" />
-                        <Change 
-                            Tick.Width="200%" 
-                            Duration="0.2" 
-                            Easing="QuadraticInOut" />
-                        <Change 
-                            Tick.Height="200%" 
-                            Duration="0.2" 
-                            Easing="QuadraticInOut" />
+                        <Change Input.Opacity="0" />
+                        <Change TickPanel.Opacity="1" Duration="0.1" Easing="QuadraticInOut" />
+                        <Change TickText.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
+                        <Change Tick.Width="200%" Duration="0.2" Easing="QuadraticInOut" />
+                        <Change Tick.Height="200%" Duration="0.2" Easing="QuadraticInOut" />
                     </WhilePressed>
-
                     <!-- Site is Success End -->
 
                     <Image X="0" Y="-30px">
@@ -226,14 +181,14 @@
                             <FileImageSource Density="2" File="Assets/img/water-blue@2x.png"  />
                         </MultiDensityImageSource>
                     </Image>
-                    <Image ux:Name="Duck" Height="80" Width="120" X="0" Y="-84px">
+                    <Image ux:Name="Duck" Height="60" Width="90" X="0" Y="-114px" Margin="10,0,0,0">
                         <MultiDensityImageSource>
                             <FileImageSource Density="1" File="Assets/img/logo.png"  />
                             <FileImageSource Density="2" File="Assets/img/logo@2x.png"  />
                         </MultiDensityImageSource>
                     </Image>
 
-                    <BottomFrameBackground Dock="Bottom" ux:Name="bottomframe" />
+                    <BottomFrameBackground Dock="Bottom" />
                 </DockPanel>
             </Page>
         </PageControl>
