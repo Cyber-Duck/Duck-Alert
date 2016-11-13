@@ -1,6 +1,17 @@
 var Observable = require("FuseJS/Observable");
 var LocalNotify = require("FuseJS/LocalNotifications");
 var phone = require("FuseJS/Phone");
+var Storage = require("FuseJS/Storage");
+
+Storage.read("domains.json")
+.then(function(contents) {
+    console.log(contents);
+    if(contents == "") {
+        Storage.write("domains.json", "[]");
+    }
+}, function(error) {
+    console.log(error);
+});
 
 var status = Observable("Status Code");
 var failCount = Observable(0);
@@ -50,31 +61,47 @@ function check() {
 var interval = 5000;
 
 function checkSetTimeout() {
- 
- console.log(url.value);
- check();
- console.log("RES BODY "+resbody);
 
- setTimeout(function(){
+    console.log(url.value);
+    check();
+    console.log("RES BODY "+resbody);
 
-  if (status.value === 200) {
-    interval = 5000;
-    failCount.value = 0;
-    totalCount.value ++;
-    checkSetTimeout();
-  }
-  else {
-    interval = 1000;
-    checkSetTimeout();
-    failCount.value ++;
-    totalCount.value ++;
-      if (failCount.value >= 3) {
-        sendNow();
-        console.log("Contact Cyber Duck!") 
-      }
-  }
+    var newDomain = url.value;
+    var oldDomainsFile = Storage.read("domains.json");
+    var oldDomains = JSON.parse(JSON.stringify(oldDomainsFile));
+    oldDomains.push({"domain":newDomain});
+    console.log('Domains: ' + oldDomains);
 
- }, interval)
+    Storage.write("domains.json", JSON.stringify(oldDomains))
+    .then(function(succeeded) {
+        if(succeeded) {
+            console.log("File saved");
+        }
+        else {
+            console.log("Couldn't write to file.");
+        }
+    });
+
+    setTimeout(function(){
+
+    if (status.value === 200) {
+        interval = 5000;
+        failCount.value = 0;
+        totalCount.value ++;
+        checkSetTimeout();
+    }
+    else {
+        interval = 1000;
+        checkSetTimeout();
+        failCount.value ++;
+        totalCount.value ++;
+        if (failCount.value >= 3) {
+            sendNow();
+            console.log("Contact Cyber Duck!") 
+        }
+    }
+
+    }, interval)
 }
 
 
@@ -85,6 +112,11 @@ function callTeam() {
 function addDomain() {
   router.goto("PageAdd")
 }
+
+// var domains = [
+//     { domain: 'http://beta1.cyber-duck.co.uk/duck-alert' },
+//     { domain: 'http://beta1.cyber-duck.co.uk/duck-alert-fail' }
+// ]
 
 module.exports = {
     status: status,
