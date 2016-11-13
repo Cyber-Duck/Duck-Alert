@@ -68,9 +68,9 @@ function checkSetTimeout() {
 
     var newDomain = url.value;
     var oldDomainsFile = Storage.read("domains.json");
-    var oldDomains = JSON.parse(JSON.stringify(oldDomainsFile));
+    oldDomainsFile = JSON.parse(JSON.stringify(oldDomainsFile));
+    var oldDomains = [];
     oldDomains.push({"domain":newDomain});
-    console.log('Domains: ' + oldDomains);
 
     Storage.write("domains.json", JSON.stringify(oldDomains))
     .then(function(succeeded) {
