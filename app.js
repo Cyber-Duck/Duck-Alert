@@ -13,20 +13,29 @@ Storage.read("domains.json")
     console.log(error);
 });
 
-var status = Observable("Status Code");
+var status = Observable();
+var status2 = Observable();
 var failCount = Observable(0);
+var failCount2 = Observable(0);
 var totalCount = Observable(0);
-var url = Observable("");
-var resbody;
+var url = Observable();
 
 var isWebsiteDown = failCount.map(function(value){
-  console.log(value);
+  return value >= 1;
+})
+
+var isWebsiteDown2 = failCount2.map(function(value){
   return value >= 1;
 })
 
 var isWebsiteUp = failCount.map(function(value){
   return value == 0;
 })
+
+var isWebsiteUp2 = failCount2.map(function(value){
+  return value == 0;
+})
+
 //Local Notifications
 LocalNotify.onReceivedMessage = function(payload) {
     console.log ("Recieved Local Notification: " + payload);
@@ -35,7 +44,7 @@ LocalNotify.onReceivedMessage = function(payload) {
 };
 
 function sendNow() {
-    LocalNotify.now("Boom!", "Just like that", "payload", true);
+    LocalNotify.now("Uh Oh! There is a problem with your website.", "Call Cyber-Duck", "payload", true);
 };
 
 function check() {
@@ -64,13 +73,12 @@ function checkSetTimeout() {
 
     console.log(url.value);
     check();
-    console.log("RES BODY "+resbody);
 
     var newDomain = url.value;
     var oldDomainsFile = Storage.read("domains.json");
     var oldDomains = JSON.parse(JSON.stringify(oldDomainsFile));
-    oldDomains.push({"domain":newDomain});
-    console.log('Domains: ' + oldDomains);
+
+    oldDomains.domain = newDomain;
 
     Storage.write("domains.json", JSON.stringify(oldDomains))
     .then(function(succeeded) {
@@ -96,8 +104,11 @@ function checkSetTimeout() {
         failCount.value ++;
         totalCount.value ++;
         if (failCount.value >= 3) {
-            sendNow();
-            console.log("Contact Cyber Duck!") 
+
+            if (failCount===3){
+              sendNow();
+              console.log("Website Down!")
+            }
         }
     }
 
@@ -118,15 +129,69 @@ function addDomain() {
 //     { domain: 'http://beta1.cyber-duck.co.uk/duck-alert-fail' }
 // ]
 
+function check2() {
+
+  var check2Url = "http://beta1.cyber-duck.co.uk/duck-alert-12345"
+  console.log("CHECKING CYBER DUCK");
+
+  fetch(check2Url, {
+      method: 'GET',
+      headers: { "Content-type": "application/json"}
+  }).then(function(response) {
+      status2.value = response.status; 
+  }).then(function(responseObject) {
+      //do something with response object / data
+  }).catch(function(err) {
+      // An error occurred somewhere in the Promise chain
+      console.log(err)
+  });
+
+} 
+
+function checkSetTimeout2() {
+
+    check2();
+
+    setTimeout(function(){
+
+    if (status2.value === 200) {
+        interval = 5000;
+        failCount2.value = 0;
+        checkSetTimeout2();
+    }
+    else {
+        interval = 1000;
+        checkSetTimeout2();
+        failCount2.value ++;
+        if (failCount.value >= 3) {
+
+            if (failCount2===3){
+              sendNow();
+              console.log("Website Down!")
+            }
+        }
+    }
+
+    }, interval)
+}
+
+checkSetTimeout2(); 
+
 module.exports = {
     status: status,
     url: url,
     failCount: failCount,
+    failCount2: failCount2,
     totalCount: totalCount,
     check: check,
+    check2: check2,
     checkSetTimeout: checkSetTimeout,
+    checkSetTimeout2: checkSetTimeout2,
     sendNow: sendNow,
     isWebsiteDown: isWebsiteDown,
+    isWebsiteDown2: isWebsiteDown2,
+    isWebsiteUp: isWebsiteUp,
+    isWebsiteUp2: isWebsiteUp2,
     callTeam: callTeam,
     addDomain: addDomain
 };
