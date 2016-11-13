@@ -13,7 +13,7 @@
                 <DockPanel ux:Name="Panel2" Background="#379bd2" Height="80%" Alignment="Bottom">
 
                     <Activated>
-                        <Change Duck2.X="240" Duration="3" DurationBack="0" Easing="QuinticOut" />
+                        <Change Duck2.X="420" Duration="14" DurationBack="0" Easing="QuinticOut" />
                     </Activated>
 
                     <BlankButton Alignment="BottomRight" Clicked="{addDomain}" Width="60" Height="60">
@@ -28,13 +28,6 @@
                     <Bubbles />
 
                     <Fish />
-
-                    <Image StretchMode="UniformToFill">
-                        <MultiDensityImageSource>
-                            <FileImageSource Density="1" File="Assets/img/flowers-bg.png" />
-                            <FileImageSource Density="2" File="Assets/img/flowers-bg@2x.png" />
-                        </MultiDensityImageSource>
-                    </Image>
 
                     <!-- Site is Fail -->
                     <WhileTrue Value="{isWebsiteDown}">
@@ -72,13 +65,20 @@
                         </Text>
                     </StackPanel>
 
+                    <Image StretchMode="UniformToFill">
+                        <MultiDensityImageSource>
+                            <FileImageSource Density="1" File="Assets/img/flowers-bg.png" />
+                            <FileImageSource Density="2" File="Assets/img/flowers-bg@2x.png" />
+                        </MultiDensityImageSource>
+                    </Image>
+
                     <Image X="0" Y="-30px">
                         <MultiDensityImageSource>
                             <FileImageSource Density="1" File="Assets/img/water-blue.png"  />
                             <FileImageSource Density="2" File="Assets/img/water-blue@2x.png"  />
                         </MultiDensityImageSource>
                     </Image>
-                    <Image ux:Name="Duck2" Height="60" Width="90" X="0" Y="-114px" Margin="10,0,0,0">
+                    <Image ux:Name="Duck2" Height="60" Width="90" X="-120" Y="-114px" Margin="10,0,0,0">
                         <MultiDensityImageSource>
                             <FileImageSource Density="1" File="Assets/img/logo.png"  />
                             <FileImageSource Density="2" File="Assets/img/logo@2x.png"  />
@@ -92,7 +92,7 @@
             <Page ux:Name="PageAdd">
                 <DockPanel ux:Name="Panel1" Background="#379bd2" Height="80%" Alignment="Bottom">
                     <Activated>
-                        <Change Duck.X="240" Duration="3" DurationBack="0" Easing="QuinticOut" />
+                        <Change Duck.X="420" Duration="14" DurationBack="0" />
                     </Activated>
 
                     <StackPanel ux:Name="Input" Alignment="Bottom" Padding="6" Margin="20" Background="#379bd2">
@@ -181,7 +181,7 @@
                             <FileImageSource Density="2" File="Assets/img/water-blue@2x.png"  />
                         </MultiDensityImageSource>
                     </Image>
-                    <Image ux:Name="Duck" Height="60" Width="90" X="0" Y="-114px" Margin="10,0,0,0">
+                    <Image ux:Name="Duck" Height="60" Width="90" X="-120" Y="-114px" Margin="10,0,0,0">
                         <MultiDensityImageSource>
                             <FileImageSource Density="1" File="Assets/img/logo.png"  />
                             <FileImageSource Density="2" File="Assets/img/logo@2x.png"  />
