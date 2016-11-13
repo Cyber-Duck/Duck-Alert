@@ -14,13 +14,13 @@
 
                     <Activated>
                         <WhileActive>
-                        <Cycle 
-                            Target="Duck2.X"
-                            Low="-400" 
-                            High="1000"  
-                            Frequency="0.15"
-                            Waveform="Sawtooth" />
-                    </WhileActive>
+                            <Cycle 
+                                Target="Duck2.X"
+                                Low="-200" 
+                                High="440"  
+                                Frequency="0.10"
+                                Waveform="Sawtooth" />
+                        </WhileActive>
                     </Activated>
 
                     <BlankButton Alignment="BottomRight" Clicked="{addDomain}" Width="60" Height="60">
@@ -37,7 +37,7 @@
                     <Fish />
 
                     <!-- Site is Fail -->
-                    <WhileTrue Value="{isWebsiteDown}">
+                    <WhileTrue Value="{isWebsiteDown1}">
                         <Change Panel1.Background="#f26522" />
                         <Change Panel1.Height="86%" Duration="0.4" Easing="QuadraticInOut" />
                         <Image X="0" Y="-30px">
@@ -49,10 +49,10 @@
                         <Rotate Target="Duck" Delay="0.25" Degrees="-25" Duration="0.3" Easing="QuadraticInOut" />
                         <Change Duck.Y="-64px" Delay="0.25" Duration="0.3" Easing="QuadraticInOut" />
                         <Change Input.Opacity="0" />
-                        <Change PhonePanel.Opacity="1" Duration="0.1" Easing="QuadraticInOut" />
+                        <Change PhonePanel.Opacity="1" Duration="0.2" Easing="QuadraticInOut" />
                         <Change PhoneText.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
-                        <Change Phone.Width="200%" Duration="0.2" Easing="QuadraticInOut" />
-                        <Change Phone.Height="200%" Duration="0.2" Easing="QuadraticInOut" />
+                        <Change Phone.Width="120" Duration="0.8" Easing="ElasticOut" />
+                        <Change Phone.Height="120" Duration="0.8" Easing="ElasticOut" />
                     </WhileTrue>
 
                     <!-- Site is Fail End -->
@@ -101,9 +101,9 @@
                     <WhileActive>
                         <Cycle 
                             Target="Duck.X"
-                            Low="-400" 
-                            High="1000"  
-                            Frequency="0.15"
+                            Low="-200" 
+                            High="440"  
+                            Frequency="0.10"
                             Waveform="Sawtooth" />
                     </WhileActive>
 
@@ -129,8 +129,18 @@
                     <Fish />
 
                     <StackPanel ux:Name="PhonePanel" Alignment="Bottom" Opacity="0">
+                        <Text ux:Name="ErrorText" FontSize="28" 
+                            TextWrapping="Wrap" Margin="0" Color="#fff" Font="Montserrat" TextAlignment="Center">
+                            OH NO!
+                        </Text>
+
+                        <Text ux:Name="ErrorText2" FontSize="18" 
+                            TextWrapping="Wrap" Margin="0,10,0,60" Color="#fff" Font="Montserrat" TextAlignment="Center">
+                            YOUR WEBSITE HAS TAKEN A DIVE
+                        </Text>
+
                         <Button Clicked="{callTeam}" HitTestMode="LocalBoundsAndChildren">
-                            <Circle ux:Name="Phone" Width="60" Height="60" Color="#fff">
+                            <Circle ux:Name="Phone" Width="10" Height="10" Color="#fff">
                                 <Image StretchMode="UniformToFill">
                                     <MultiDensityImageSource>
                                         <FileImageSource Density="1" File="Assets/img/button-call.png" />
@@ -149,7 +159,7 @@
                     <!-- Site is Fail -->
                     <WhileTrue Value="{isWebsiteDown}">
                         <Change Panel1.Background="#f26522" />
-                        <Change Panel1.Height="86%" Duration="0.4" Easing="QuadraticInOut" />
+                        <Change Panel1.Height="83%" Duration="0.4" Easing="QuadraticInOut" />
 
                         <Image X="0" Y="-30px">
                             <MultiDensityImageSource>
@@ -160,12 +170,14 @@
 
                         <Rotate Target="Duck" Delay="0.25" Degrees="-25" Duration="0.3" Easing="QuadraticInOut" />
                         <Change Duck.Y="-64px" Delay="0.25" Duration="0.3" Easing="QuadraticInOut" />
-                        <Stop Target="Duck" />
+                        <!-- <Stop Target="Duck" /> -->
                         <Change Input.Opacity="0" />
-                        <Change PhonePanel.Opacity="1" Duration="0.1" Easing="QuadraticInOut" />
+                        <Change Flowers.Opacity="0" />
+                        <Change DeadFlowers.Opacity="1" />
+                        <Change PhonePanel.Opacity="1" Duration="0.2" Easing="QuadraticInOut" />
                         <Change PhoneText.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
-                        <Change Phone.Width="200%" Duration="0.2" Easing="QuadraticInOut" />
-                        <Change Phone.Height="200%" Duration="0.2" Easing="QuadraticInOut" />
+                        <Change Phone.Width="160" Duration="0.8" Easing="ElasticOut" />
+                        <Change Phone.Height="160" Duration="0.8" Easing="ElasticOut" />
                     </WhileTrue>
                     <!-- Site is Fail End -->
 
@@ -176,15 +188,22 @@
                         <Change Input.Opacity="0" />
                         <Change TickPanel.Opacity="1" Duration="0.1" Easing="QuadraticInOut" />
                         <Change TickText.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
-                        <Change Tick.Width="200%" Duration="0.2" Easing="QuadraticInOut" />
-                        <Change Tick.Height="200%" Duration="0.2" Easing="QuadraticInOut" />
+                        <Change Tick.Width="160" Duration="0.2" Easing="ElasticOut" />
+                        <Change Tick.Height="160" Duration="0.2" Easing="ElasticOut" />
                     </WhileTrue>
                     <!-- Site is Success End -->
 
-                    <Image StretchMode="UniformToFill">
+                    <Image StretchMode="PixelPrecise" Alignment="BottomCenter" ux:Name="Flowers">
                         <MultiDensityImageSource>
                             <FileImageSource Density="1" File="Assets/img/flowers-bg.png" />
                             <FileImageSource Density="2" File="Assets/img/flowers-bg@2x.png" />
+                        </MultiDensityImageSource>
+                    </Image>
+
+                    <Image StretchMode="PixelPrecise" Alignment="BottomCenter" ux:Name="DeadFlowers" Opacity="0">
+                        <MultiDensityImageSource>
+                            <FileImageSource Density="1" File="Assets/img/dead-flowers-bg.png" />
+                            <FileImageSource Density="2" File="Assets/img/dead-flowers-bg@2x.png" />
                         </MultiDensityImageSource>
                     </Image>
 
