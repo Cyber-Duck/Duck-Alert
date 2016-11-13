@@ -12,16 +12,14 @@
             <Page>
                 <DockPanel ux:Name="Panel2" Background="#379bd2" Height="80%" Alignment="Bottom">
 
-                    <Activated>
-                        <WhileActive>
-                            <Cycle 
-                                Target="Duck2.X"
-                                Low="-200" 
-                                High="440"  
-                                Frequency="0.10"
-                                Waveform="Sawtooth" />
-                        </WhileActive>
-                    </Activated>
+                    <WhileActive>
+                        <Cycle 
+                            Target="Duck2.X"
+                            Low="-200" 
+                            High="440"  
+                            Frequency="0.10"
+                            Waveform="Sawtooth" />
+                    </WhileActive>
 
                     <BlankButton Alignment="BottomRight" Clicked="{addDomain}" Width="60" Height="60">
                         <Panel Layer="Background" Height="16">
