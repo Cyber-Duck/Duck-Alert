@@ -1,13 +1,14 @@
                     <Each 
                         Items="{bubbles}"
                         ux:Class="Bubbles">
-                        <Activated>
+                        <WhileActive>
                             <Circle 
                                 ux:Name="Bubble" 
                                 Width="{width}" 
                                 Height="{height}" 
                                 X="{x}" 
-                                Y="100%">
+                                Y="100%"
+                                Opacity="1">
                                 <Stroke 
                                     Width="1">
                                     <SolidColor 
@@ -15,15 +16,15 @@
                                 </Stroke>
                             </Circle>
                             <Change 
-                                Bubble.Y="0" 
-                                Delay="{delay}" 
-                                Duration="{duration}" 
-                                DurationBack="0" />
-                            <Change 
-                                Bubble.Opacity="0" 
-                                Duration="{duration}" 
-                                Delay="{delay}" 
-                                DurationBack="0" />
+                                Bubble.Opacity="0.25" 
+                                Duration="10"
+                                Delay= "1" />
+                            <Cycle 
+                                Target="Bubble.Y"
+                                Low="{y}" 
+                                High="-2"
+                                Frequency="{frequency}"
+                                Waveform="Sawtooth" />
 
-                        </Activated>
+                        </WhileActive>
                     </Each>

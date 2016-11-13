@@ -13,7 +13,14 @@
                 <DockPanel ux:Name="Panel2" Background="#379bd2" Height="80%" Alignment="Bottom">
 
                     <Activated>
-                        <Change Duck2.X="420" Duration="14" DurationBack="0" Easing="QuinticOut" />
+                        <WhileActive>
+                        <Cycle 
+                            Target="Duck2.X"
+                            Low="-400" 
+                            High="1000"  
+                            Frequency="0.15"
+                            Waveform="Sawtooth" />
+                    </WhileActive>
                     </Activated>
 
                     <BlankButton Alignment="BottomRight" Clicked="{addDomain}" Width="60" Height="60">
@@ -78,7 +85,7 @@
                             <FileImageSource Density="2" File="Assets/img/water-blue@2x.png"  />
                         </MultiDensityImageSource>
                     </Image>
-                    <Image ux:Name="Duck2" Height="60" Width="90" X="-120" Y="-114px" Margin="10,0,0,0">
+                    <Image ux:Name="Duck2" Height="60" Width="90" X="0" Y="-114px" Margin="10,0,0,0">
                         <MultiDensityImageSource>
                             <FileImageSource Density="1" File="Assets/img/logo.png"  />
                             <FileImageSource Density="2" File="Assets/img/logo@2x.png"  />
@@ -91,9 +98,14 @@
 
             <Page ux:Name="PageAdd">
                 <DockPanel ux:Name="Panel1" Background="#379bd2" Height="80%" Alignment="Bottom">
-                    <Activated>
-                        <Change Duck.X="420" Duration="14" DurationBack="0" />
-                    </Activated>
+                    <WhileActive>
+                        <Cycle 
+                            Target="Duck.X"
+                            Low="-400" 
+                            High="1000"  
+                            Frequency="0.15"
+                            Waveform="Sawtooth" />
+                    </WhileActive>
 
                     <StackPanel ux:Name="Input" Alignment="Bottom" Padding="6" Margin="20" Background="#379bd2">
                         <Text FontSize="18" TextWrapping="Wrap" Margin="20,0,20,10" Color="#fff" TextAlignment="Center" Font="Montserrat">
@@ -134,13 +146,6 @@
                         </Text>
                     </StackPanel>
 
-                    <Image StretchMode="UniformToFill">
-                        <MultiDensityImageSource>
-                            <FileImageSource Density="1" File="Assets/img/flowers-bg.png" />
-                            <FileImageSource Density="2" File="Assets/img/flowers-bg@2x.png" />
-                        </MultiDensityImageSource>
-                    </Image>
-
                     <!-- Site is Fail -->
                     <WhileTrue Value="{isWebsiteDown}">
                         <Change Panel1.Background="#f26522" />
@@ -155,6 +160,7 @@
 
                         <Rotate Target="Duck" Delay="0.25" Degrees="-25" Duration="0.3" Easing="QuadraticInOut" />
                         <Change Duck.Y="-64px" Delay="0.25" Duration="0.3" Easing="QuadraticInOut" />
+                        <Stop Target="Duck" />
                         <Change Input.Opacity="0" />
                         <Change PhonePanel.Opacity="1" Duration="0.1" Easing="QuadraticInOut" />
                         <Change PhoneText.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
@@ -165,15 +171,22 @@
 
                     <!-- Site is Success -->
 
-                    <!-- <WhileTrue Value="{isWebsiteUp}"> -->
-                    <WhilePressed>
+                    <WhileTrue Value="{isWebsiteUp}">
+                    <!-- <WhilePressed> -->
                         <Change Input.Opacity="0" />
                         <Change TickPanel.Opacity="1" Duration="0.1" Easing="QuadraticInOut" />
                         <Change TickText.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
                         <Change Tick.Width="200%" Duration="0.2" Easing="QuadraticInOut" />
                         <Change Tick.Height="200%" Duration="0.2" Easing="QuadraticInOut" />
-                    </WhilePressed>
+                    </WhileTrue>
                     <!-- Site is Success End -->
+
+                    <Image StretchMode="UniformToFill">
+                        <MultiDensityImageSource>
+                            <FileImageSource Density="1" File="Assets/img/flowers-bg.png" />
+                            <FileImageSource Density="2" File="Assets/img/flowers-bg@2x.png" />
+                        </MultiDensityImageSource>
+                    </Image>
 
                     <Image X="0" Y="-30px">
                         <MultiDensityImageSource>
@@ -181,7 +194,7 @@
                             <FileImageSource Density="2" File="Assets/img/water-blue@2x.png"  />
                         </MultiDensityImageSource>
                     </Image>
-                    <Image ux:Name="Duck" Height="60" Width="90" X="-120" Y="-114px" Margin="10,0,0,0">
+                    <Image ux:Name="Duck" Height="60" Width="90" X="0" Y="-114px" Margin="10,0,0,0">
                         <MultiDensityImageSource>
                             <FileImageSource Density="1" File="Assets/img/logo.png"  />
                             <FileImageSource Density="2" File="Assets/img/logo@2x.png"  />
