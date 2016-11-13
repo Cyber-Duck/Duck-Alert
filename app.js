@@ -74,22 +74,6 @@ function checkSetTimeout() {
     console.log(url.value);
     check();
 
-    var newDomain = url.value;
-    var oldDomainsFile = Storage.read("domains.json");
-    var oldDomains = JSON.parse(JSON.stringify(oldDomainsFile));
-
-    oldDomains.domain = newDomain;
-
-    Storage.write("domains.json", JSON.stringify(oldDomains))
-    .then(function(succeeded) {
-        if(succeeded) {
-            console.log("File saved");
-        }
-        else {
-            console.log("Couldn't write to file.");
-        }
-    });
-
     setTimeout(function(){
 
     if (status.value === 200) {

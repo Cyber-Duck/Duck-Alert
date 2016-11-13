@@ -11,11 +11,16 @@
                         </MultiDensityImageSource>
                     </Image>
 
-                    <Activated>
-                        <Change 
-                            Fish.X="-40%" 
-                            Duration="9"
-                            Delay="2" 
-                            DurationBack="0" />
-                    </Activated>
+                    <WhileActive>
+                        <Cycle 
+                            Target="Fish.X"
+                            High="-40" 
+                            Low="400"  
+                            Frequency="0.07"
+                            Waveform="Sawtooth" />
+                    </WhileActive>
+
+                    <WhileTrue Value="{isWebsiteDown}">
+                        <Change Fish.Opacity="0" />
+                    </WhileTrue>
                 </Panel>

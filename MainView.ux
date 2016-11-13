@@ -12,16 +12,14 @@
             <Page>
                 <DockPanel ux:Name="Panel2" Background="#379bd2" Height="80%" Alignment="Bottom">
 
-                    <Activated>
-                        <WhileActive>
-                            <Cycle 
-                                Target="Duck2.X"
-                                Low="-200" 
-                                High="440"  
-                                Frequency="0.10"
-                                Waveform="Sawtooth" />
-                        </WhileActive>
-                    </Activated>
+                    <WhileActive>
+                        <Cycle 
+                            Target="Duck2.X"
+                            Low="-200" 
+                            High="440"  
+                            Frequency="0.10"
+                            Waveform="Sawtooth" />
+                    </WhileActive>
 
                     <BlankButton Alignment="BottomRight" Clicked="{addDomain}" Width="60" Height="60">
                         <Panel Layer="Background" Height="16">
@@ -46,8 +44,7 @@
                                 <FileImageSource Density="2" File="Assets/img/water-orange@2x.png" />
                             </MultiDensityImageSource>                            
                         </Image>
-                        <Rotate Target="Duck" Delay="0.25" Degrees="-25" Duration="0.3" Easing="QuadraticInOut" />
-                        <Change Duck.Y="-64px" Delay="0.25" Duration="0.3" Easing="QuadraticInOut" />
+                        <Change Duck.Opacity="0" />
                         <Change Input.Opacity="0" />
                         <Change PhonePanel.Opacity="1" Duration="0.2" Easing="QuadraticInOut" />
                         <Change PhoneText.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
@@ -168,8 +165,10 @@
                             </MultiDensityImageSource>                            
                         </Image>
 
-                        <Rotate Target="Duck" Delay="0.25" Degrees="-25" Duration="0.3" Easing="QuadraticInOut" />
-                        <Change Duck.Y="-64px" Delay="0.25" Duration="0.3" Easing="QuadraticInOut" />
+                        <Change Duck.Opacity="0" />
+                        <Rotate Target="DuckDead" Delay="0.25" Degrees="-25" Duration="0.3" Easing="QuadraticInOut" />
+                        <Change DuckDead.Opacity="1" />
+                        <Change DuckDead.Y="-64px" Delay="0.25" Duration="0.3" Easing="QuadraticInOut" />
                         <!-- <Stop Target="Duck" /> -->
                         <Change Input.Opacity="0" />
                         <Change Flowers.Opacity="0" />
@@ -214,6 +213,12 @@
                         </MultiDensityImageSource>
                     </Image>
                     <Image ux:Name="Duck" Height="60" Width="90" X="0" Y="-114px" Margin="10,0,0,0">
+                        <MultiDensityImageSource>
+                            <FileImageSource Density="1" File="Assets/img/logo.png"  />
+                            <FileImageSource Density="2" File="Assets/img/logo@2x.png"  />
+                        </MultiDensityImageSource>
+                    </Image>
+                    <Image ux:Name="DuckDead" Height="60" Width="90" X="120" Y="-114px" Margin="10,0,0,0" Opacity="0">
                         <MultiDensityImageSource>
                             <FileImageSource Density="1" File="Assets/img/logo.png"  />
                             <FileImageSource Density="2" File="Assets/img/logo@2x.png"  />
