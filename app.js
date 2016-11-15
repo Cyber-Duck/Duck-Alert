@@ -29,7 +29,11 @@ var isWebsiteDown2 = failCount2.map(function(value){
 })
 
 var isWebsiteUp = failCount.map(function(value){
-  return value == 0;
+  if(status.value == 200) {
+    return true;
+  } else {
+    return false;
+  }
 })
 
 var isWebsiteUp2 = failCount2.map(function(value){
@@ -115,7 +119,7 @@ function addDomain() {
 
 function check2() {
 
-  var check2Url = "http://beta1.cyber-duck.co.uk/duck-alert-12345"
+  var check2Url = "http://beta1.cyber-duck.co.uk/duck-alert"
   console.log("CHECKING CYBER DUCK");
 
   fetch(check2Url, {
@@ -147,7 +151,7 @@ function checkSetTimeout2() {
         interval = 1000;
         checkSetTimeout2();
         failCount2.value ++;
-        if (failCount.value >= 3) {
+        if (failCount2.value >= 3) {
 
             if (failCount2===3){
               sendNow();

@@ -34,28 +34,62 @@
 
                     <Fish />
 
+                    <StackPanel ux:Name="PhonePanel2" Alignment="Bottom" Opacity="0">
+                        <Text ux:Name="ErrorText3" FontSize="28" 
+                            TextWrapping="Wrap" Margin="0" Color="#fff" Font="Montserrat" TextAlignment="Center">
+                            OH NO!
+                        </Text>
+
+                        <Text ux:Name="ErrorText4" FontSize="18" 
+                            TextWrapping="Wrap" Margin="0,10,0,60" Color="#fff" Font="Montserrat" TextAlignment="Center">
+                            YOUR WEBSITE HAS TAKEN A DIVE
+                        </Text>
+
+                        <Button Clicked="{callTeam}" HitTestMode="LocalBoundsAndChildren">
+                            <Circle ux:Name="Phone2" Width="10" Height="10" Color="#fff">
+                                <Image StretchMode="UniformToFill">
+                                    <MultiDensityImageSource>
+                                        <FileImageSource Density="1" File="Assets/img/button-call.png" />
+                                        <FileImageSource Density="2" File="Assets/img/button-call@2x.png" />
+                                    </MultiDensityImageSource>
+                                </Image>
+                            </Circle>
+                        </Button>
+
+                        <Text ux:Name="PhoneText2" Opacity="0" FontSize="18" 
+                            TextWrapping="Wrap" Margin="0,20,0,60" Color="#fff" Font="Montserrat" TextAlignment="Center">
+                            CALL THE TEAM
+                        </Text>
+                    </StackPanel>
+
                     <!-- Site is Fail -->
-                    <WhileTrue Value="{isWebsiteDown1}">
-                        <Change Panel1.Background="#f26522" />
-                        <Change Panel1.Height="86%" Duration="0.4" Easing="QuadraticInOut" />
+                    <WhileTrue Value="{isWebsiteDown2}">
+                        <Change Panel2.Background="#f26522" />
+                        <Change Panel2.Height="86%" Duration="0.4" Easing="QuadraticInOut" />
                         <Image X="0" Y="-30px">
                             <MultiDensityImageSource>
                                 <FileImageSource Density="1" File="Assets/img/water-orange.png" />
                                 <FileImageSource Density="2" File="Assets/img/water-orange@2x.png" />
                             </MultiDensityImageSource>                            
                         </Image>
-                        <Change Duck.Opacity="0" />
-                        <Change Input.Opacity="0" />
-                        <Change PhonePanel.Opacity="1" Duration="0.2" Easing="QuadraticInOut" />
-                        <Change PhoneText.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
-                        <Change Phone.Width="120" Duration="0.8" Easing="ElasticOut" />
-                        <Change Phone.Height="120" Duration="0.8" Easing="ElasticOut" />
+                        <Change Duck2.Opacity="0" />
+                        <Rotate Target="DuckDead2" Delay="0.25" Degrees="-25" Duration="0.3" Easing="QuadraticInOut" />
+                        <Change DuckDead2.Opacity="1" />
+                        <Change DuckDead2.Y="-64px" Delay="0.25" Duration="0.3" Easing="QuadraticInOut" />
+
+                        <Change Flowers2.Opacity="0" />
+                        <Change DeadFlowers2.Opacity="1" />
+                        <Change PhonePanel2.Opacity="1" Duration="0.2" Easing="QuadraticInOut" />
+                        <Change PhoneText2.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
+                        <Change Phone2.Width="120" Duration="0.8" Easing="ElasticOut" />
+                        <Change Phone2.Height="120" Duration="0.8" Easing="ElasticOut" />
+                        <Change TickPanel2.Opacity="0" Duration="0.1" Easing="QuadraticInOut" />
                     </WhileTrue>
 
                     <!-- Site is Fail End -->
 
-                    <StackPanel ux:Name="TickPanel" Alignment="Bottom" Opacity="1">
-                        <Circle ux:Name="Tick" Width="160" Height="160" Color="#fff">
+                    <StackPanel ux:Name="TickPanel2" Alignment="Bottom" Opacity="1">
+                        <Circle ux:Name="Tick2" Width="160" Height="160" Color="#fff">
                             <Image StretchMode="UniformToFill">
                                 <MultiDensityImageSource>
                                     <FileImageSource Density="1" File="Assets/img/check.png" />
@@ -64,15 +98,32 @@
                             </Image>
                         </Circle>
 
-                        <Text ux:Name="TickText" Opacity="1" FontSize="18" TextWrapping="Wrap" Margin="0,20,0,60" Color="#fff" Font="Montserrat" TextAlignment="Center">
-                            ALL GOOD!
+                        <Text ux:Name="TickText2" Background="#379bd2" Opacity="1" FontSize="18" TextWrapping="Wrap" Margin="40,20,40,60" Color="#fff" Font="Montserrat" TextAlignment="Center">
+                            WORKING SWIMMINGLY!
                         </Text>
                     </StackPanel>
 
-                    <Image StretchMode="UniformToFill">
+
+                    <WhileTrue Value="{isWebsiteUp2}">
+                    <!-- <WhilePressed> -->
+                        <Change TickPanel2.Opacity="1" Duration="0.1" Easing="QuadraticInOut" />
+                        <Change TickText2.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
+                        <Change Tick2.Width="160" Duration="0.2" Easing="ElasticOut" />
+                        <Change Tick2.Height="160" Duration="0.2" Easing="ElasticOut" />
+                    </WhileTrue>
+                    <!-- Site is Success End -->
+
+                    <Image StretchMode="PixelPrecise" Alignment="BottomCenter" ux:Name="Flowers2">
                         <MultiDensityImageSource>
                             <FileImageSource Density="1" File="Assets/img/flowers-bg.png" />
                             <FileImageSource Density="2" File="Assets/img/flowers-bg@2x.png" />
+                        </MultiDensityImageSource>
+                    </Image>
+
+                    <Image StretchMode="PixelPrecise" Alignment="BottomCenter" ux:Name="DeadFlowers2" Opacity="0">
+                        <MultiDensityImageSource>
+                            <FileImageSource Density="1" File="Assets/img/dead-flowers-bg.png" />
+                            <FileImageSource Density="2" File="Assets/img/dead-flowers-bg@2x.png" />
                         </MultiDensityImageSource>
                     </Image>
 
@@ -88,10 +139,31 @@
                             <FileImageSource Density="2" File="Assets/img/logo@2x.png"  />
                         </MultiDensityImageSource>
                     </Image>
+                    <Image ux:Name="DuckDead2" Height="60" Width="90" X="120" Y="-114px" Margin="10,0,0,0" Opacity="0">
+                        <MultiDensityImageSource>
+                            <FileImageSource Density="1" File="Assets/img/logo.png"  />
+                            <FileImageSource Density="2" File="Assets/img/logo@2x.png"  />
+                        </MultiDensityImageSource>
+                    </Image>
 
                     <BottomFrameBackground Dock="Bottom" />
                 </DockPanel>                
             </Page>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <Page ux:Name="PageAdd">
                 <DockPanel ux:Name="Panel1" Background="#379bd2" Height="80%" Alignment="Bottom">
@@ -182,8 +254,22 @@
 
                     <!-- Site is Success -->
 
+                    <StackPanel ux:Name="TickPanel" Alignment="Bottom" Opacity="0">
+                        <Circle ux:Name="Tick" Width="160" Height="160" Color="#fff">
+                            <Image StretchMode="UniformToFill">
+                                <MultiDensityImageSource>
+                                    <FileImageSource Density="1" File="Assets/img/check.png" />
+                                    <FileImageSource Density="2" File="Assets/img/check@2x.png" />
+                                </MultiDensityImageSource>
+                            </Image>
+                        </Circle>
+
+                        <Text ux:Name="TickText" Background="#379bd2" Opacity="1" FontSize="18" TextWrapping="Wrap" Margin="40,20,40,60" Color="#fff" Font="Montserrat" TextAlignment="Center">
+                            YAY! WORKING SWIMMINGLY!
+                        </Text>
+                    </StackPanel>
+
                     <WhileTrue Value="{isWebsiteUp}">
-                    <!-- <WhilePressed> -->
                         <Change Input.Opacity="0" />
                         <Change TickPanel.Opacity="1" Duration="0.1" Easing="QuadraticInOut" />
                         <Change TickText.Opacity="1" Duration="0.6" Easing="QuadraticInOut" />
